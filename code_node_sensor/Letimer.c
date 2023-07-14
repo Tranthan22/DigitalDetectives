@@ -94,7 +94,7 @@ void LETIMER0_IRQHandler(void){
       k--;
       if( USART0->STATUS & USART_STATUS_RXDATAV ){
       receivedData = (uint8_t)USART0->RXDATA;
-      if( receivedData != 0 ){
+      if( receivedData == '1' ){
           i= false;
           USART_Tx(USART0, receivedData);
       }
