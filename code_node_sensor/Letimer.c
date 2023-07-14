@@ -7,7 +7,7 @@
 
 #include "Letimer.h"
 
-#define Time_underflow   20  /*10s*/
+#define Time_underflow   20  /*20s*/
 
 double battery = 999;
 uint8_t count = 0;
