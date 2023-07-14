@@ -96,7 +96,6 @@ void LETIMER0_IRQHandler(void){
       receivedData = (uint8_t)USART0->RXDATA;
       if( receivedData == '1' ){
           i= false;
-          USART_Tx(USART0, receivedData);
       }
       }
       if(k==0){
