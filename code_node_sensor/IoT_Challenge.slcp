@@ -25,11 +25,11 @@ toolchain_settings: []
 component:
 - {id: EFR32MG24B210F1536IM48}
 - {id: emlib_iadc}
-- {id: emlib_letimer}
 - {id: sl_system}
+- {id: brd4186c}
+- {id: emlib_letimer}
 - {id: device_init}
 - {id: brd4002a}
-- {id: brd4186c}
 - {id: ustimer}
 - {id: emlib_timer}
 define:

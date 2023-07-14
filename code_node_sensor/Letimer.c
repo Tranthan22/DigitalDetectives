@@ -7,7 +7,8 @@
 
 #include "Letimer.h"
 
-#define Time_underflow   10  /*10s*/
+#define Time_underflow   20  /*10s*/
+
 double battery = 999;
 uint8_t count = 0;
 
@@ -85,31 +86,30 @@ void LETIMER0_IRQHandler(void){
   uint8_t length = sizeof(data_sensor);
   transmitData(data_sensor, length);
 
+  uint32_t k = 20000000; /* Lặp một khỏang thời gian đợi tín hiệu phản hồi từ station */
+  bool i = true;
+  char receivedData;
 
-
+  while (i){
+      k--;
+      if( USART0->STATUS & USART_STATUS_RXDATAV ){
+      receivedData = (uint8_t)USART0->RXDATA;
+      if( receivedData != 0 ){
+          i= false;
+          USART_Tx(USART0, receivedData);
+      }
+      }
+      if(k==0){
+          i=false;
+          transmitData(data_sensor, length); /* transmit data again */
+      }
+  }
 
 }
 
 
 
-/*
 
-  uint32_t k = 100000;
-  uint8_t  i = 1;
-  uint8_t receivedData = 0;
 
-  while (i){
-      k--;
-      if((USART0->STATUS & USART_STATUS_RXDATAV) !=0 ){
-      receivedData = USART0->RXDATA;
-      if( receivedData != 0 ){
-          i=0;
-      }
-      }
-      if(k==0){
-          i=0;
-          // sendArrayData(Data, length);
-      }
-  }
 
- */
+

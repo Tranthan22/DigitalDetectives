@@ -18,6 +18,8 @@
     <property object="PD03" propertyId="ABModule.selectedRequirement" value="gpio%T%SL_BOARD_ENABLE_SENSOR_RHT%T%sl_board_control_config.h"/>
     <property object="PD03" propertyId="pin.reserve" value="Reserved"/>
     <property object="PORTIO" propertyId="portio.gpio.enable.swv" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.usart0.enable.cts" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.usart0.enable.rts" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.usart0.enable.rx" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.usart0.enable.tx" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.usart0.location.cts" value="21"/>

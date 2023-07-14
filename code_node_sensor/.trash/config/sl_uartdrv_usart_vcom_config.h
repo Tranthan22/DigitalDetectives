@@ -68,7 +68,7 @@
 // <usartOVS6=> 6x oversampling
 // <usartOVS4=> 4x oversampling
 // <i> Default: usartOVS16
-#define SL_UARTDRV_USART_VCOM_OVERSAMPLING      usartOVS4
+#define SL_UARTDRV_USART_VCOM_OVERSAMPLING      usartOVS16
 
 // <o SL_UARTDRV_USART_VCOM_MVDIS> Majority vote disable for 16x, 8x and 6x oversampling modes
 // <true=> True
@@ -104,12 +104,12 @@
 #define SL_UARTDRV_USART_VCOM_TX_PIN             8
 #endif
 
-// USART0 RX on PA07
+// USART0 RX on PA09
 #ifndef SL_UARTDRV_USART_VCOM_RX_PORT           
 #define SL_UARTDRV_USART_VCOM_RX_PORT            gpioPortA
 #endif
 #ifndef SL_UARTDRV_USART_VCOM_RX_PIN            
-#define SL_UARTDRV_USART_VCOM_RX_PIN             7
+#define SL_UARTDRV_USART_VCOM_RX_PIN             9
 #endif
 
 // USART0 CTS on PB05
@@ -120,6 +120,13 @@
 #define SL_UARTDRV_USART_VCOM_CTS_PIN            5
 #endif
 
+// USART0 RTS on PA00
+#ifndef SL_UARTDRV_USART_VCOM_RTS_PORT          
+#define SL_UARTDRV_USART_VCOM_RTS_PORT           gpioPortA
+#endif
+#ifndef SL_UARTDRV_USART_VCOM_RTS_PIN           
+#define SL_UARTDRV_USART_VCOM_RTS_PIN            0
+#endif
 // [USART_SL_UARTDRV_USART_VCOM]$
 // <<< sl:end pin_tool >>>
 

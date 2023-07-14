@@ -18,7 +18,7 @@ void uartInit(void){
   GPIO_PinModeSet(gpioPortB, 0, gpioModePushPull, 1);  /* VCOM */
 
   USART_InitAsync_TypeDef uartinit = USART_INITASYNC_DEFAULT;
-  uartinit.baudrate = 9600;
+  uartinit.baudrate = 115200;
 
   GPIO->USARTROUTE[0].TXROUTE = (gpioPortA << _GPIO_USART_TXROUTE_PORT_SHIFT)
       | (8 << _GPIO_USART_TXROUTE_PIN_SHIFT);
