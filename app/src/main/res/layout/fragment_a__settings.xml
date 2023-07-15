@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="650dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".A_Settings">
+
+    <Button
+        android:id="@+id/icon_settings"
+        android:layout_width="80dp"
+        android:background="@drawable/ic_home"
+        android:layout_marginBottom="20dp"
+        android:layout_height="80dp"/>
+    <TextView
+        android:id="@+id/username_settings"
+        android:textColor="#0d6e6a"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:text="Hello"
+        android:textSize="35dp"
+        android:layout_marginBottom="50dp"
+        android:layout_height="wrap_content"/>
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:columnCount="2"
+        android:rowCount="3"
+        android:layout_marginBottom="40dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_column="0"
+            android:layout_row="0"
+            android:layout_width="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ic_settings"
+            android:layout_height="40dp"/>
+        <TextView
+            android:id="@+id/settings_settings"
+            android:textColor="@color/purple"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:layout_width="wrap_content"
+            android:text="Settings"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:layout_width="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/setting_supports"
+            android:layout_height="40dp"/>
+        <TextView
+            android:id="@+id/help_settings"
+            android:textColor="@color/purple"
+            android:layout_width="wrap_content"
+            android:text="Help and support"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:layout_width="40dp"
+            android:background="@drawable/baseline_info_24"
+            android:layout_height="40dp"/>
+        <TextView
+            android:id="@+id/aboutUs_settings"
+            android:textColor="@color/purple"
+            android:layout_width="wrap_content"
+            android:text="About us"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"/>
+    </GridLayout>
+    <Button
+        android:id="@+id/signout_settings"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:text="Sign out"
+        android:textSize="30dp"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

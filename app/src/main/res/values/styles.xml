@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="Widget.Theme.MyApplication2.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+    <style name="TabTextStyle" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">20sp</item> <!-- Thay đổi kích thước chữ ở đây -->
+        <item name="android:textStyle">bold</item> <!-- Thêm kiểu in đậm cho chữ -->
+    </style>
+</resources>

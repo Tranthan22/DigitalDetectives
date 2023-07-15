@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    android:padding="16dp"
+    >
+    <TextView
+        android:text="Set pump time "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_blue_900"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <SeekBar
+            android:id="@+id/seekBar_setPumpTime"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:max="120"
+            android:min="5"
+
+            android:progress="5"
+            android:stepSize="5" />
+
+        <TextView
+            android:textColor="@color/light_blue_600"
+            android:id="@+id/textview_seekBar"
+            android:layout_width="118dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="0 minute"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <TextView
+        android:textColor="@color/light_blue_900"
+        android:layout_marginTop="20dp"
+        android:text="Set language"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"/>
+
+    <Spinner
+        android:id="@+id/spinner_language"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"/>
+    <Button
+        android:background="@drawable/gray"
+        android:text="Ok"
+        android:id="@+id/btn_settings_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</LinearLayout>
