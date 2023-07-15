@@ -56,7 +56,7 @@ double getMoisture(void){
 
   IADC_Result_t sample = IADC_readSingleResult(IADC0);
   voltage = (double)sample.data * 3.3 / 0xFFF;
-  Moisture = ((3.3 - voltage) / 3.3) * 100;
+  Moisture = ((3.0 - voltage) / 3.0) * 100 * 10;
   return Moisture;
 
 }

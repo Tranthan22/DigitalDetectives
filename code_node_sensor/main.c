@@ -13,8 +13,6 @@
 #include "sl_system_process_action.h"
 #endif
 
-
-
 int main(void)
 {
 
