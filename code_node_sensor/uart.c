@@ -41,16 +41,10 @@ void transmitData(char* dataArray, uint16_t length)
 }
 
 void data(const char* data_sensor, char* Data) {
-  uint8_t j = 0;
-  for (uint8_t i = 0; i < 20; i += 2) {
-    char asciiData[3] = "";
-    asciiData[0] = data_sensor[i];
-    asciiData[1] = data_sensor[i + 1];
-    asciiData[2] = '\0';
-    int value = atoi(asciiData);
-    Data[j] = (char)value;
-    j++;
-  }
+    for (uint8_t i = 0, j = 0; i < 20; i += 2, j++) {
+        char asciiData[3] = { data_sensor[i], data_sensor[i + 1], '\0' };
+        Data[j] = (char)atoi(asciiData);
+    }
 }
 
 void insertStringAtBeginning(char* inputArray, char* outputArray, char* stringToInsert)

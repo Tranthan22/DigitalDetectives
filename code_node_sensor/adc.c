@@ -20,7 +20,6 @@ void iadcInit(void){
   IADC_SingleInput_t initSingleInput = IADC_SINGLEINPUT_DEFAULT;
 
   IADC_reset(IADC0);
-
   initAllConfigs.configs[0].reference = iadcCfgReferenceVddx;
   initAllConfigs.configs[0].vRef = 3300;
 
@@ -32,15 +31,12 @@ void iadcInit(void){
   initAllConfigs.configs[0].digAvg = iadcDigitalAverage16;
 
   initSingle.triggerAction = iadcTriggerActionOnce;
-
   initSingleInput.posInput = iadcPosInputPortAPin5; /*P43*/
   initSingleInput.negInput = iadcNegInputGnd;
 
   IADC_init(IADC0, &init, &initAllConfigs);
   IADC_initSingle(IADC0, &initSingle, &initSingleInput);
   GPIO->ABUSALLOC |= GPIO_ABUSALLOC_AODD0_ADC0;
-
-
 
 }
 

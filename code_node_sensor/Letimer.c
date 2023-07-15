@@ -94,13 +94,16 @@ void LETIMER0_IRQHandler(void){
       if( USART0->STATUS & USART_STATUS_RXDATAV ){
       receivedData = (uint8_t)USART0->RXDATA;
       if( receivedData == '1' ){
-          USART_Tx(USART0, receivedData);
           i= false;
       }
+      else if ( receivedData == '0' ){
+          i= false;
+          transmitData(data_sensor, length); /* Retransmit the data because the previous data may be corrupted. */
       }
-      if(k==0){
+      }
+      else if(k==0){
           i=false;
-          transmitData(data_sensor, length); /* Transmit data again */
+          transmitData(data_sensor, length); /* Retransmit the data as there is no response */
       }
   }
 }
