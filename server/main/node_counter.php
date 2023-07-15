@@ -1,7 +1,4 @@
 <?php
-	//this program get data from database 
-	//example: http://localhost/.iot/getdata.php?node_id=node_01
-
 	include 'database.php'; // declare subprogram access to database
 
 	if(!empty($_GET)){
