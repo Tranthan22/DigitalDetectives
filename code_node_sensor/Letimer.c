@@ -63,7 +63,7 @@ void LETIMER0_IRQHandler(void){
 
   /* Get Moisture */
   iadcStartsingle();
-  double Moisture = getMoisture() * 10;
+  double Moisture = getMoisture();
 
   /* Get Temperature and Humidity  */
   DHT_GetData(&DHT_data);
@@ -86,24 +86,23 @@ void LETIMER0_IRQHandler(void){
   uint8_t length = sizeof(data_sensor);
   transmitData(data_sensor, length);
 
-  uint32_t k = 20000000; /* Lặp một khỏang thời gian đợi tín hiệu phản hồi từ station */
+  uint32_t k = 15000000; /* Lặp một khỏang thời gian đợi phản hồi từ station */
   bool i = true;
   char receivedData;
-
   while (i){
       k--;
       if( USART0->STATUS & USART_STATUS_RXDATAV ){
       receivedData = (uint8_t)USART0->RXDATA;
       if( receivedData == '1' ){
+          USART_Tx(USART0, receivedData);
           i= false;
       }
       }
       if(k==0){
           i=false;
-          transmitData(data_sensor, length); /* transmit data again */
+          transmitData(data_sensor, length); /* Transmit data again */
       }
   }
-
 }
 
 
