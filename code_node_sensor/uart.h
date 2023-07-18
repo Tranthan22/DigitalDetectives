@@ -18,7 +18,7 @@
 #include <stdlib.h>
 
 void uartInit(void);
-void transmitData(char* dataArray, uint16_t length);
+void transmitData(char* dataArray, uint8_t length);
 void doubleToCharArray(double number, char* array, int arraySize);
 void insertStringAtBeginning(char* inputArray, char* outputArray, char* stringToInsert);
 void concatenateArrays(const char* a, const char* b, const char* c, const char* d, char* sum);

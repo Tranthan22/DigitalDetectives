@@ -83,10 +83,10 @@ void LETIMER0_IRQHandler(void){
   data(data_sensor, Data);
 
   /* Transmit data */
-  uint8_t length = sizeof(data_sensor);
+  uint8_t length = sizeof(data_sensor)-1;
   transmitData(data_sensor, length);
 
-  uint32_t k = 15000000; /* Lặp một khỏang thời gian đợi phản hồi từ station */
+  uint32_t k = 15000000; /* Wait for a period of time to receive a signal response from the station */
   bool i = true;
   char receivedData;
   while (i){
@@ -110,6 +110,37 @@ void LETIMER0_IRQHandler(void){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ *   uint8_t length = sizeof(Data);
+  transmitData(Data, length);
+ */
 
 
 

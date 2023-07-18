@@ -94,22 +94,6 @@
 // [TIMER4]$
 
 // $[USART0]
-// USART0 CTS on PB05
-#ifndef USART0_CTS_PORT                         
-#define USART0_CTS_PORT                          gpioPortB
-#endif
-#ifndef USART0_CTS_PIN                          
-#define USART0_CTS_PIN                           5
-#endif
-
-// USART0 RTS on PA00
-#ifndef USART0_RTS_PORT                         
-#define USART0_RTS_PORT                          gpioPortA
-#endif
-#ifndef USART0_RTS_PIN                          
-#define USART0_RTS_PIN                           0
-#endif
-
 // USART0 RX on PA09
 #ifndef USART0_RX_PORT                          
 #define USART0_RX_PORT                           gpioPortA

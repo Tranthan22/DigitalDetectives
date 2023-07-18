@@ -37,7 +37,7 @@
 // <h> UART settings
 // <o SL_UARTDRV_USART_VCOM_BAUDRATE> Baud rate
 // <i> Default: 115200
-#define SL_UARTDRV_USART_VCOM_BAUDRATE        9600
+#define SL_UARTDRV_USART_VCOM_BAUDRATE        115200
 
 // <o SL_UARTDRV_USART_VCOM_PARITY> Parity mode to use
 // <usartNoParity=> No Parity
@@ -77,11 +77,11 @@
 
 // <o SL_UARTDRV_USART_VCOM_RX_BUFFER_SIZE> Size of the receive operation queue
 // <i> Default: 6
-#define SL_UARTDRV_USART_VCOM_RX_BUFFER_SIZE  6
+#define SL_UARTDRV_USART_VCOM_RX_BUFFER_SIZE  8
 
 // <o SL_UARTDRV_USART_VCOM_TX_BUFFER_SIZE> Size of the transmit operation queue
 // <i> Default: 6
-#define SL_UARTDRV_USART_VCOM_TX_BUFFER_SIZE 6
+#define SL_UARTDRV_USART_VCOM_TX_BUFFER_SIZE 8
 
 // </h>
 // <<< end of configuration section >>>
@@ -112,21 +112,6 @@
 #define SL_UARTDRV_USART_VCOM_RX_PIN             9
 #endif
 
-// USART0 CTS on PB05
-#ifndef SL_UARTDRV_USART_VCOM_CTS_PORT          
-#define SL_UARTDRV_USART_VCOM_CTS_PORT           gpioPortB
-#endif
-#ifndef SL_UARTDRV_USART_VCOM_CTS_PIN           
-#define SL_UARTDRV_USART_VCOM_CTS_PIN            5
-#endif
-
-// USART0 RTS on PA00
-#ifndef SL_UARTDRV_USART_VCOM_RTS_PORT          
-#define SL_UARTDRV_USART_VCOM_RTS_PORT           gpioPortA
-#endif
-#ifndef SL_UARTDRV_USART_VCOM_RTS_PIN           
-#define SL_UARTDRV_USART_VCOM_RTS_PIN            0
-#endif
 // [USART_SL_UARTDRV_USART_VCOM]$
 // <<< sl:end pin_tool >>>
 
