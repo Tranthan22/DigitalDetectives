@@ -7,6 +7,7 @@
 
 #ifndef FLASH_H_
 #define FLASH_H_
+
 #include "em_msc.h"
 #include "em_cmu.h"
 

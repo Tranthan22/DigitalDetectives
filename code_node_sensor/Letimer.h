@@ -8,7 +8,6 @@
 #ifndef LETIMER_H_
 #define LETIMER_H_
 
-/* #include "iadcScan.h" */
 #include "adc.h"
 #include "uart.h"
 #include "DHT22.h"

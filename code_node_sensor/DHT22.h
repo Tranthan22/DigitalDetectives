@@ -5,12 +5,12 @@
  *      Author: KarimPham
  */
 
+#ifndef DHT22_H_
+#define DHT22_H_
+
 #include "em_cmu.h"
 #include "ustimer.h"
 #include "em_gpio.h"
-
-#ifndef DHT22_H_
-#define DHT22_H_
 
 typedef struct
 {
