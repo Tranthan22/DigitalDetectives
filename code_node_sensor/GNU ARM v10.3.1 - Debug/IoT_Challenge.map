@@ -63,6 +63,27 @@ Discarded input sections
  .text          0x00000000        0x0 ./app.o
  .data          0x00000000        0x0 ./app.o
  .bss           0x00000000        0x0 ./app.o
+ .text          0x00000000        0x0 ./flash.o
+ .data          0x00000000        0x0 ./flash.o
+ .bss           0x00000000        0x0 ./flash.o
+ .text.writeDataToUserFlash
+                0x00000000       0x3a ./flash.o
+ .text.eraseUserFlashData
+                0x00000000       0x2c ./flash.o
+ .text.flashReadData
+                0x00000000       0x12 ./flash.o
+ .debug_info    0x00000000      0x307 ./flash.o
+ .debug_abbrev  0x00000000       0xcc ./flash.o
+ .debug_loc     0x00000000       0x9c ./flash.o
+ .debug_aranges
+                0x00000000       0x30 ./flash.o
+ .debug_ranges  0x00000000       0x20 ./flash.o
+ .debug_line    0x00000000      0x1bd ./flash.o
+ .debug_str     0x00000000      0x6a0 ./flash.o
+ .comment       0x00000000       0x4a ./flash.o
+ .debug_frame   0x00000000       0x60 ./flash.o
+ .ARM.attributes
+                0x00000000       0x3a ./flash.o
  .text          0x00000000        0x0 ./iadcScan.o
  .data          0x00000000        0x0 ./iadcScan.o
  .bss           0x00000000        0x0 ./iadcScan.o
@@ -668,6 +689,7 @@ LOAD ./DHT22.o
 LOAD ./Letimer.o
 LOAD ./adc.o
 LOAD ./app.o
+LOAD ./flash.o
 LOAD ./iadcScan.o
 LOAD ./main.o
 LOAD ./uart.o
@@ -2038,43 +2060,43 @@ LOAD linker stubs
  .debug_ranges  0x00000ca0       0x10 ./gecko_sdk_4.3.0/platform/service/system/src/sl_system_init.o
  .debug_ranges  0x00000cb0       0x18 ./gecko_sdk_4.3.0/platform/service/udelay/src/sl_udelay.o
 
-.debug_line     0x00000000     0xb2be
+.debug_line     0x00000000     0xb2c0
  .debug_line    0x00000000      0x3b1 ./DHT22.o
  .debug_line    0x000003b1      0x417 ./Letimer.o
  .debug_line    0x000007c8      0x2de ./adc.o
  .debug_line    0x00000aa6       0x53 ./app.o
- .debug_line    0x00000af9       0x50 ./main.o
- .debug_line    0x00000b49      0x43b ./uart.o
- .debug_line    0x00000f84       0x5a ./autogen/sl_board_default_init.o
- .debug_line    0x00000fde      0x235 ./autogen/sl_device_init_clocks.o
- .debug_line    0x00001213      0x16f ./autogen/sl_event_handler.o
- .debug_line    0x00001382      0x3e9 ./gecko_sdk_4.3.0/hardware/board/src/sl_board_control_gpio.o
- .debug_line    0x0000176b       0xf3 ./gecko_sdk_4.3.0/hardware/board/src/sl_board_init.o
- .debug_line    0x0000185e      0x3ca ./gecko_sdk_4.3.0/hardware/driver/configuration_over_swo/src/sl_cos.o
- .debug_line    0x00001c28      0x3f7 ./gecko_sdk_4.3.0/hardware/driver/mx25_flash_shutdown/src/sl_mx25_flash_shutdown_usart/sl_mx25_flash_shutdown.o
- .debug_line    0x0000201f      0x2d7 ./gecko_sdk_4.3.0/platform/Device/SiliconLabs/EFR32MG24/Source/startup_efr32mg24.o
- .debug_line    0x000022f6      0x580 ./gecko_sdk_4.3.0/platform/Device/SiliconLabs/EFR32MG24/Source/system_efr32mg24.o
- .debug_line    0x00002876       0x88 ./gecko_sdk_4.3.0/platform/common/src/sl_assert.o
- .debug_line    0x000028fe      0x2b7 ./gecko_sdk_4.3.0/platform/common/toolchain/src/sl_memory.o
- .debug_line    0x00002bb5      0x585 ./gecko_sdk_4.3.0/platform/driver/debug/src/sl_debug_swo.o
- .debug_line    0x0000313a      0x7a8 ./gecko_sdk_4.3.0/platform/emdrv/ustimer/src/ustimer.o
- .debug_line    0x000038e2     0x2382 ./gecko_sdk_4.3.0/platform/emlib/src/em_cmu.o
- .debug_line    0x00005c64      0x8d4 ./gecko_sdk_4.3.0/platform/emlib/src/em_core.o
- .debug_line    0x00006538      0xb8d ./gecko_sdk_4.3.0/platform/emlib/src/em_emu.o
- .debug_line    0x000070c5      0x654 ./gecko_sdk_4.3.0/platform/emlib/src/em_gpio.o
- .debug_line    0x00007719      0xf44 ./gecko_sdk_4.3.0/platform/emlib/src/em_iadc.o
- .debug_line    0x0000865d      0x52c ./gecko_sdk_4.3.0/platform/emlib/src/em_letimer.o
- .debug_line    0x00008b89      0x477 ./gecko_sdk_4.3.0/platform/emlib/src/em_system.o
- .debug_line    0x00009000      0x8da ./gecko_sdk_4.3.0/platform/emlib/src/em_timer.o
- .debug_line    0x000098da      0x947 ./gecko_sdk_4.3.0/platform/emlib/src/em_usart.o
- .debug_line    0x0000a221      0x23c ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_dcdc_s2.o
- .debug_line    0x0000a45d      0x2b7 ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_emu_s2.o
- .debug_line    0x0000a714      0x2ff ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_hfxo_s2.o
- .debug_line    0x0000aa13      0x241 ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_lfxo_s2.o
- .debug_line    0x0000ac54      0x30e ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_nvic.o
- .debug_line    0x0000af62       0x97 ./gecko_sdk_4.3.0/platform/service/system/src/sl_system_init.o
- .debug_line    0x0000aff9      0x231 ./gecko_sdk_4.3.0/platform/service/udelay/src/sl_udelay.o
- .debug_line    0x0000b22a       0x94 ./gecko_sdk_4.3.0/platform/service/udelay/src/sl_udelay_armv6m_gcc.o
+ .debug_line    0x00000af9       0x52 ./main.o
+ .debug_line    0x00000b4b      0x43b ./uart.o
+ .debug_line    0x00000f86       0x5a ./autogen/sl_board_default_init.o
+ .debug_line    0x00000fe0      0x235 ./autogen/sl_device_init_clocks.o
+ .debug_line    0x00001215      0x16f ./autogen/sl_event_handler.o
+ .debug_line    0x00001384      0x3e9 ./gecko_sdk_4.3.0/hardware/board/src/sl_board_control_gpio.o
+ .debug_line    0x0000176d       0xf3 ./gecko_sdk_4.3.0/hardware/board/src/sl_board_init.o
+ .debug_line    0x00001860      0x3ca ./gecko_sdk_4.3.0/hardware/driver/configuration_over_swo/src/sl_cos.o
+ .debug_line    0x00001c2a      0x3f7 ./gecko_sdk_4.3.0/hardware/driver/mx25_flash_shutdown/src/sl_mx25_flash_shutdown_usart/sl_mx25_flash_shutdown.o
+ .debug_line    0x00002021      0x2d7 ./gecko_sdk_4.3.0/platform/Device/SiliconLabs/EFR32MG24/Source/startup_efr32mg24.o
+ .debug_line    0x000022f8      0x580 ./gecko_sdk_4.3.0/platform/Device/SiliconLabs/EFR32MG24/Source/system_efr32mg24.o
+ .debug_line    0x00002878       0x88 ./gecko_sdk_4.3.0/platform/common/src/sl_assert.o
+ .debug_line    0x00002900      0x2b7 ./gecko_sdk_4.3.0/platform/common/toolchain/src/sl_memory.o
+ .debug_line    0x00002bb7      0x585 ./gecko_sdk_4.3.0/platform/driver/debug/src/sl_debug_swo.o
+ .debug_line    0x0000313c      0x7a8 ./gecko_sdk_4.3.0/platform/emdrv/ustimer/src/ustimer.o
+ .debug_line    0x000038e4     0x2382 ./gecko_sdk_4.3.0/platform/emlib/src/em_cmu.o
+ .debug_line    0x00005c66      0x8d4 ./gecko_sdk_4.3.0/platform/emlib/src/em_core.o
+ .debug_line    0x0000653a      0xb8d ./gecko_sdk_4.3.0/platform/emlib/src/em_emu.o
+ .debug_line    0x000070c7      0x654 ./gecko_sdk_4.3.0/platform/emlib/src/em_gpio.o
+ .debug_line    0x0000771b      0xf44 ./gecko_sdk_4.3.0/platform/emlib/src/em_iadc.o
+ .debug_line    0x0000865f      0x52c ./gecko_sdk_4.3.0/platform/emlib/src/em_letimer.o
+ .debug_line    0x00008b8b      0x477 ./gecko_sdk_4.3.0/platform/emlib/src/em_system.o
+ .debug_line    0x00009002      0x8da ./gecko_sdk_4.3.0/platform/emlib/src/em_timer.o
+ .debug_line    0x000098dc      0x947 ./gecko_sdk_4.3.0/platform/emlib/src/em_usart.o
+ .debug_line    0x0000a223      0x23c ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_dcdc_s2.o
+ .debug_line    0x0000a45f      0x2b7 ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_emu_s2.o
+ .debug_line    0x0000a716      0x2ff ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_hfxo_s2.o
+ .debug_line    0x0000aa15      0x241 ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_lfxo_s2.o
+ .debug_line    0x0000ac56      0x30e ./gecko_sdk_4.3.0/platform/service/device_init/src/sl_device_init_nvic.o
+ .debug_line    0x0000af64       0x97 ./gecko_sdk_4.3.0/platform/service/system/src/sl_system_init.o
+ .debug_line    0x0000affb      0x231 ./gecko_sdk_4.3.0/platform/service/udelay/src/sl_udelay.o
+ .debug_line    0x0000b22c       0x94 ./gecko_sdk_4.3.0/platform/service/udelay/src/sl_udelay_armv6m_gcc.o
 
 .debug_str      0x00000000     0xcf7d
  .debug_str     0x00000000     0x1106 ./DHT22.o

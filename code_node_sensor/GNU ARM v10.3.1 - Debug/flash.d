@@ -1,9 +1,7 @@
-main.o: ../main.c \
+flash.o: ../flash.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\autogen/sl_component_catalog.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\system\inc\sl_system_init.h \
- ../app.h ../adc.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_iadc.h \
+ ../flash.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\em_device.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24b210f1536im48.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\cmsis\core\include\core_cm33.h \
@@ -56,40 +54,24 @@ main.o: ../main.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\autogen/sl_component_catalog.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_bus.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core_generic.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_common.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h \
  C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\config/emlib_core_debug_config.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_enum.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_system.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_system_generic.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\sli_em_cmu.h \
- ../uart.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_usart.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h \
- ../Letimer.h ../DHT22.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\ustimer\inc\ustimer.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\common\inc\ecode.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\config/ustimer_config.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_letimer.h \
- ../flash.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc_compat.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_ramfunc.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_emu.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\system\inc\sl_system_process_action.h
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_enum.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\sli_em_cmu.h
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\autogen/sl_component_catalog.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\system\inc\sl_system_init.h:
-../app.h:
-../adc.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_iadc.h:
+../flash.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\em_device.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24b210f1536im48.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\cmsis\core\include\core_cm33.h:
@@ -142,32 +124,18 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\autogen/sl_component_catalog.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_bus.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core_generic.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_common.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h:
 C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\config/emlib_core_debug_config.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_enum.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_system.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_system_generic.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\sli_em_cmu.h:
-../uart.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_usart.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h:
-../Letimer.h:
-../DHT22.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\ustimer\inc\ustimer.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\common\inc\ecode.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\config/ustimer_config.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_letimer.h:
-../flash.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc_compat.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_ramfunc.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_emu.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\system\inc\sl_system_process_action.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_enum.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\sli_em_cmu.h:

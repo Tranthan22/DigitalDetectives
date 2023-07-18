@@ -76,7 +76,11 @@ app.o: ../app.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\ustimer\inc\ustimer.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\common\inc\ecode.h \
  C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\config/ustimer_config.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_letimer.h
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_letimer.h \
+ ../flash.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc_compat.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_ramfunc.h
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 ../app.h:
 ../adc.h:
@@ -157,3 +161,7 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\ustimer\inc\ustime
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\common\inc\ecode.h:
 C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\config/ustimer_config.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_letimer.h:
+../flash.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc_compat.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_ramfunc.h:
