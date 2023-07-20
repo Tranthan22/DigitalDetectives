@@ -12,7 +12,8 @@ void connectToStation(void){
    char dataToConnect[] = { 0xFF, 0xFF, 0x17, '1', '1', '0', '0', '0', '1'};
    uint8_t length = sizeof (dataToConnect);
    transmitData(dataToConnect, length);
-   /* Nhận lại địa chỉ của Station nếu được cho phép ghép đôi */
+
+   /* Nhận phản hồi từ station xem có được ghép đôi ? */
    char response[7];
    for (uint8_t i=0 ; i<8; i++){
        response[i] = USART_Rx(USART0);

@@ -78,6 +78,7 @@ main.o: ../main.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\common\inc\ecode.h \
  C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\config/ustimer_config.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_letimer.h \
+ ../connect.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_emu.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\system\inc\sl_system_process_action.h
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
@@ -161,5 +162,6 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\ustimer\inc\ustime
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emdrv\common\inc\ecode.h:
 C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\config/ustimer_config.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_letimer.h:
+../connect.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_emu.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\system\inc\sl_system_process_action.h:
