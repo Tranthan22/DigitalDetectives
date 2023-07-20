@@ -22,7 +22,7 @@ void connectToStation(void){
    if ( response[0] == '1' && response[1] == '1'){
        char address[9] = { response[2], response[3], response[4], response[5], '2', '3', '1', '1','\0'};
        GPIO_PinModeSet(GPIO_PORTB, 2, gpioModeInputPull, 0);
-       GPIO_PinOutToggle(GPIO_PORTB, 2);
+       GPIO_PinOutToggle(GPIO_PORTB, 2); /* Bật LEDO (2s): Thông báo kết nối thành công */
        USTIMER_Init();
        USTIMER_DelayIntSafe(2000000);
        GPIO_PinOutToggle(GPIO_PORTB, 2);
@@ -31,7 +31,7 @@ void connectToStation(void){
    /* Station gửi phản hồi không được ghép  */
    else if(response[0] == '0' && response[1] == '0'){
        GPIO_PinModeSet(GPIO_PORTB, 4, gpioModeInputPull, 0);
-       GPIO_PinOutToggle(GPIO_PORTB, 4);
+       GPIO_PinOutToggle(GPIO_PORTB, 4); /* Bật LED1 (2s): Thông báo kết nối không thành công */
        USTIMER_Init();
        USTIMER_DelayIntSafe(2000000);
        EMU_EnterEM4();
