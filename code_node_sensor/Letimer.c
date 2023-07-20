@@ -88,15 +88,15 @@ void LETIMER0_IRQHandler(void){
 
   uint32_t k = 15000000; /* Wait for a period of time to receive a signal response from the station */
   bool i = true;
-  char receivedData;
+  char response;
   while (i){
       k--;
       if( USART0->STATUS & USART_STATUS_RXDATAV ){
-      receivedData = (uint8_t)USART0->RXDATA;
-      if( receivedData == '1' ){
+      response = (uint8_t)USART0->RXDATA;
+      if( response == '1' ){
           i= false;
       }
-      else if ( receivedData == '0' ){
+      else if ( response == '0' ){
           i= false;
           transmitData(data_sensor, length); /* Retransmit the data because the previous data may be corrupted. */
       }
