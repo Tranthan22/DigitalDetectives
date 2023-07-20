@@ -8,12 +8,12 @@
 #ifndef LETIMER_H_
 #define LETIMER_H_
 
-#include "adc.h"
 #include "uart.h"
 #include "DHT22.h"
 #include "em_letimer.h"
 #include "em_cmu.h"
 #include "em_gpio.h"
+#include "iadc.h"
 
 
 void letimer0Init(void);

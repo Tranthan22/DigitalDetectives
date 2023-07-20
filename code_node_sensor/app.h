@@ -8,7 +8,7 @@
 #define LED1_PORT gpioPortB
 #define LED1_PIN  4
 
-#include "adc.h"
+#include "iadc.h"
 #include "uart.h"
 #include "Letimer.h"
 #include "connect.h"

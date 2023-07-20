@@ -1,6 +1,6 @@
 app.o: ../app.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h \
- ../app.h ../adc.h \
+ ../app.h ../iadc.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_iadc.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\em_device.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24b210f1536im48.h \
@@ -81,7 +81,7 @@ app.o: ../app.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_emu.h
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 ../app.h:
-../adc.h:
+../iadc.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_iadc.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\em_device.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24b210f1536im48.h:

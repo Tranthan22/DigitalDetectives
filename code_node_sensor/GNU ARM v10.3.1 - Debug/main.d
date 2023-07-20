@@ -2,7 +2,7 @@ main.o: ../main.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h \
  C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\autogen/sl_component_catalog.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\system\inc\sl_system_init.h \
- ../app.h ../adc.h \
+ ../app.h ../iadc.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_iadc.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\em_device.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24b210f1536im48.h \
@@ -85,7 +85,7 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_
 C:\Users\jengp\SimplicityStudio\v5_workspace\IoT_Challenge\autogen/sl_component_catalog.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\system\inc\sl_system_init.h:
 ../app.h:
-../adc.h:
+../iadc.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_iadc.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\em_device.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24b210f1536im48.h:
