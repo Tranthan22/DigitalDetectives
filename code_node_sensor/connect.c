@@ -15,7 +15,7 @@ void connectToStation(void){
 
    /* Nhận phản hồi từ station xem có được ghép đôi ? */
    char response[7];
-   for (uint8_t i=0 ; i<8; i++){
+   for (uint8_t i=0 ; i<6; i++){
        response[i] = USART_Rx(USART0);
    }
    /* Station gửi phản hồi được ghép kèm theo địa chỉ của station */
