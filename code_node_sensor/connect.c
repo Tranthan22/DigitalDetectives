@@ -18,7 +18,7 @@ void connectToStation(void){
    for (uint8_t i=0 ; i<8; i++){
        response[i] = USART_Rx(USART0);
    }
-
+   /* Station gửi phản hồi được ghép kèm theo địa chỉ của station */
    if ( response[0] == '1' && response[1] == '1'){
        char address[9] = { response[2], response[3], response[4], response[5], '2', '3', '1', '1','\0'};
        GPIO_PinModeSet(GPIO_PORTB, 2, gpioModeInputPull, 0);
@@ -28,7 +28,7 @@ void connectToStation(void){
        GPIO_PinOutToggle(GPIO_PORTB, 2);
        USTIMER_DeInit();
    }
-
+   /* Station gửi phản hồi không được ghép  */
    else if(response[0] == '0' && response[1] == '0'){
        GPIO_PinModeSet(GPIO_PORTB, 4, gpioModeInputPull, 0);
        GPIO_PinOutToggle(GPIO_PORTB, 4);
