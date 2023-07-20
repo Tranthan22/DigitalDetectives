@@ -7,7 +7,7 @@
 
 #include "Letimer.h"
 
-#define Time_underflow   20  /* 20s */
+#define Time_underflow   10  /* 20s */
 
 double battery = 999;
 uint8_t count = 0;
@@ -82,30 +82,30 @@ void LETIMER0_IRQHandler(void){
   concatenateArrays(addressAndMois, Temp, Humi, cell, data_sensor);
   data(data_sensor, Data);
 
-  /* Transmit data */
-  uint8_t length = sizeof(data_sensor)-1;
-  transmitData(data_sensor, length);
 
-  uint32_t k = 15000000; /* Wait for a period of time to receive a signal response from the station */
+  uint8_t length = sizeof(Data);
+  transmitData(Data, length);
+  uint32_t k = 8000000; /* Wait for a period of time to receive a signal response from the station */
   bool i = true;
-  char response;
+  char receivedData;
   while (i){
       k--;
       if( USART0->STATUS & USART_STATUS_RXDATAV ){
-      response = (uint8_t)USART0->RXDATA;
-      if( response == '1' ){
+      receivedData = (uint8_t)USART0->RXDATA;
+      if( receivedData == '1' ){
           i= false;
       }
-      else if ( response == '0' ){
+      else if ( receivedData == '0' ){
           i= false;
-          transmitData(data_sensor, length); /* Retransmit the data because the previous data may be corrupted. */
+          transmitData(Data, length); /* Retransmit the data because the previous data may be corrupted. */
       }
       }
       else if(k==0){
           i=false;
-          transmitData(data_sensor, length); /* Retransmit the data as there is no response */
+          transmitData(Data, length); /* Retransmit the data as there is no response */
       }
   }
+
 }
 
 
@@ -136,6 +136,19 @@ void LETIMER0_IRQHandler(void){
 
 
 
+
+/* Transmit data */
+/*  Data[0] = 0xFF;
+Data[1] = 0xFF;
+Data[2] = 0x17;
+Data[3] = 0x32;
+Data[4] = 0x33;
+Data[5] = 0x34;
+Data[6] = 0x35;
+Data[7] = 0x36;
+Data[8] = 0x37;
+Data[9] = 0x38;
+*/
 
 
 

@@ -12,7 +12,7 @@ void uartInit(void){
   CMU_ClockEnable(cmuClock_USART0, true);
 
   GPIO_PinModeSet(gpioPortA, 8, gpioModePushPull, 0); /*TX*/ /*F6*/
-  GPIO_PinModeSet(gpioPortA, 4, gpioModeInput, 0); /*RX*/ /*F3*/
+  GPIO_PinModeSet(gpioPortA, 4, gpioModeInput, 0); /*RX - 4*/ /*F3*/
   GPIO_PinModeSet(gpioPortC, 6, gpioModePushPull, 0); /*M0*/ /*P33*/
   GPIO_PinModeSet(gpioPortC, 8, gpioModePushPull, 0); /*M1*/ /*P31*/
   GPIO_PinModeSet(gpioPortB, 0, gpioModePushPull, 1);  /* VCOM */

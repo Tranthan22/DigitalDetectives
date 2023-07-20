@@ -34,3 +34,8 @@ uint32_t flashReadData(uint32_t *address) {
   return data;
 }
 
+/*
+  uint8_t data[] = {0x01, 0x02, 0x03, 0x04, 0x05};
+  writeDataToUserFlash((uint32_t *)USER_FLASH_ADDRESS, data, 5);
+*/
+

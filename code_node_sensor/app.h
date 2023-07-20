@@ -11,7 +11,6 @@
 #include "adc.h"
 #include "uart.h"
 #include "Letimer.h"
-#include "flash.h"
 
 void app_init(void);
 void app_process_action(void);

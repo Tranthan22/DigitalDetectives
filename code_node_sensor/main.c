@@ -19,10 +19,7 @@ int main(void)
 
   sl_system_init();
   app_init();
-/*
-  uint8_t data[] = {0x01, 0x02, 0x03, 0x04, 0x05};
-  writeDataToUserFlash((uint32_t *)USER_FLASH_ADDRESS, data, 5);
-*/
+
 #if defined(SL_CATALOG_KERNEL_PRESENT)
 
   sl_system_kernel_start();
