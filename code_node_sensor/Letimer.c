@@ -137,11 +137,5 @@ void LETIMER0_IRQHandler(void){
 
 
 
-/*
- *   uint8_t length = sizeof(Data);
-  transmitData(Data, length);
- */
-
-
 
 
