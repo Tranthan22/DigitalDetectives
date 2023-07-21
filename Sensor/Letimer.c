@@ -58,7 +58,7 @@ void LETIMER0_IRQHandler(void){
   LETIMER_IntClear(LETIMER0, flags);
 
   DHT_DataTypedef DHT_data;
-  char Mois[4],Cell[4], Temp[4], Humi[4]; /*Data[10]*/
+  char Mois[4],Cell[4], Temp[4], Humi[4]; 
 
   uint16_t batLevel;
 
