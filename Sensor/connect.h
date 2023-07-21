@@ -2,7 +2,7 @@
  * connect.h
  *
  *  Created on: Jul 21, 2023
- *      Author: KarimPham
+ *      Author: PhongPham
  */
 
 #ifndef CONNECT_H_

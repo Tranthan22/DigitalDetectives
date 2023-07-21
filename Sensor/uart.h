@@ -2,7 +2,7 @@
  * uart.h
  *
  *  Created on: Jun 18, 2023
- *      Author: KarimPham
+ *      Author: PhongPham
  */
 
 #ifndef UART_H_

@@ -2,7 +2,7 @@
  * Letimer.h
  *
  *  Created on: Jun 19, 2023
- *      Author: KarimPham
+ *      Author: PhongPham
  */
 
 #ifndef LETIMER_H_

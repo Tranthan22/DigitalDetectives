@@ -2,7 +2,7 @@
  * flash.c
  *
  *  Created on: Jun 20, 2023
- *      Author: KarimPham
+ *      Author: PhongPham
  */
 #include "flash.h"
 /* Địa chỉ bắt đầu của vùng nhớ USERDATA */

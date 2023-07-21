@@ -2,7 +2,7 @@
  * DHT22.c
  *
  *  Created on: Jun 20, 2023
- *      Author: KarimPham
+ *      Author: PhongPham
  */
 
 #include "DHT22.h"

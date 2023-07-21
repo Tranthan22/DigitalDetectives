@@ -2,7 +2,7 @@
  * flash.h
  *
  *  Created on: Jun 20, 2023
- *      Author: KarimPham
+ *      Author: PhongPham
  */
 
 #ifndef FLASH_H_

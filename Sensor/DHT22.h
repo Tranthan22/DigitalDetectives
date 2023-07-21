@@ -2,7 +2,7 @@
  * DHT22.h
  *
  *  Created on: Jun 20, 2023
- *      Author: KarimPham
+ *      Author: PhongPham
  */
 
 #ifndef DHT22_H_
