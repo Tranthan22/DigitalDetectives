@@ -95,7 +95,7 @@ void LETIMER0_IRQHandler(void){
                                                              Mois[0], Mois[1], Mois[2],
                                                              Temp[0], Temp[1], Temp[2],
                                                              Humi[0], Humi[1], Humi[2],
-                                                             Cell[0], Cell[1], Cell[1],
+                                                             Cell[0], Cell[1], Cell[2],
                                                              checkSum[0], checkSum[1]};
 
   /* Transmit data sensor */
