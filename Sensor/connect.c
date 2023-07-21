@@ -1,4 +1,4 @@
-/*
+mở/*
  * connect.c
  *
  *  Created on: Jul 21, 2023
@@ -36,7 +36,7 @@ void connectToStation(void){
    /* Station phản hổi không được ghép --> Vào EM4 */
    else if(response[0] == '0' && response[1] == '0'){
        GPIO_PinModeSet(GPIO_PORTB, 4, gpioModePushPull, 0);
-       GPIO_PinOutToggle(GPIO_PORTB, 4); /* Bật LED1 (2S): Thông báo kết nối không thành công */
+       GPIO_PinOutToggle(GPIO_PORTB, 4); /* Bật LED1 (2s): Thông báo kết nối không thành công */
        USTIMER_Init();
        USTIMER_DelayIntSafe(2000000);
        EMU_EnterEM4();
