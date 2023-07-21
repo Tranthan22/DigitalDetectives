@@ -60,8 +60,6 @@ void LETIMER0_IRQHandler(void){
   DHT_DataTypedef DHT_data;
   char Mois[4],Cell[4], Temp[4], Humi[4];
 
-  uint16_t batLevel;
-
   /* Get Moisture */
   iadcStartsingle();
   uint16_t Moisture = getMoisture();
@@ -73,7 +71,7 @@ void LETIMER0_IRQHandler(void){
 
   /* Get battery level */
   batteryLevel(&count, &battery);
-  batLevel = battery;
+  uint16_t batLevel = battery;
   uint16ToCharArray(batLevel, Cell, 4);
 
   /* Create a data string */
