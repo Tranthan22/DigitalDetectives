@@ -115,7 +115,7 @@ void LETIMER0_IRQHandler(void){
             break;
         }
         }
-        else if(k==0){
+        else if(k == 0){
             transmitData(dataTransmit, sizeof(dataTransmit)-1); /* Retransmit the data as there is no response */
             break;
         }
