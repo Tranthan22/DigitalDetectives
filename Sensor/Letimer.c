@@ -151,18 +151,5 @@ void LETIMER0_IRQHandler(void){
 
 
 
-/* Transmit data */
-/*  Data[0] = 0xFF;
-Data[1] = 0xFF;
-Data[2] = 0x17;
-Data[3] = 0x32;
-Data[4] = 0x33;
-Data[5] = 0x34;
-Data[6] = 0x35;
-Data[7] = 0x36;
-Data[8] = 0x37;
-Data[9] = 0x38;
-*/
-
 
 
