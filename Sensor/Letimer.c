@@ -100,23 +100,22 @@ void LETIMER0_IRQHandler(void){
   transmitData(dataTransmit, sizeof(dataTransmit)-1);
 
   uint32_t k = 10000000; /* Wait for a period of time to receive a signal response from the station */
-    bool i = true;
-    char receivedData;
-    while (i){
+  char receivedData;
+    while (1){
         k--;
         if( USART0->STATUS & USART_STATUS_RXDATAV ){
         receivedData = (uint8_t)USART0->RXDATA;
         if( receivedData == '1' ){
-            i= false;
+            break;
         }
         else if ( receivedData == '0' ){
-            i= false;
             transmitData(dataTransmit, sizeof(dataTransmit)-1); /* Retransmit the data because the previous data may be corrupted. */
+            break;
         }
         }
         else if(k==0){
-            i=false;
             transmitData(dataTransmit, sizeof(dataTransmit)-1); /* Retransmit the data as there is no response */
+            break;
         }
     }
 
