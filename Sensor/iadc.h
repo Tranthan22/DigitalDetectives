@@ -10,13 +10,11 @@
 
 #include "em_iadc.h"
 #include "em_cmu.h"
-#include <string.h>
 #include "uart.h"
+
 
 void iadcInit(void);
 void iadcStartsingle(void);
 uint16_t getMoisture(void);
-
-
 
 #endif /* IADC_H_ */

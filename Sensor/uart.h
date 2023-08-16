@@ -22,6 +22,6 @@ void transmitData(char* dataArray, uint8_t length);
 void insertStringAtBeginning(char* inputArray, char* outputArray, char* stringToInsert);
 void concatenateArrays(const char* a, const char* b, const char* c, const char* d, char* sum);
 void uint16ToCharArray(uint16_t number, char* array, int arraySize);
-uint16_t calculateChecksum(const char* array, int size);
+uint8_t calculateLrc(const char* array, int size);
 
 #endif /* UART_H_ */

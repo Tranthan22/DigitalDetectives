@@ -8,7 +8,7 @@
 #include "Letimer.h"
 
 #define Time_underflow   10  /* 10s */
-extern char address[6];
+extern char address[5];
 
 uint16_t battery = 100;
 uint8_t count = 0;
@@ -36,20 +36,20 @@ void letimer0Enable(void){
 
 }
 
-void batteryLevel(uint8_t* count, uint16_t* battery) {
-    (*count)++;
-    if (*count == 151) {
-        *battery = *battery - 1;
-        *count = 0;
-    }
-}
-
 void letimer0Disable(void){
 
   uint32_t flags=LETIMER_IntGet(LETIMER0);
   LETIMER_IntClear(LETIMER0, flags);
   LETIMER_Enable(LETIMER0, false);
 
+}
+
+void batteryLevel(uint8_t* count, uint16_t* battery) {
+    (*count)++;
+    if (*count == 5) {
+        *battery = *battery - 1;
+        *count = 0;
+    }
 }
 
 void LETIMER0_IRQHandler(void){
@@ -78,29 +78,26 @@ void LETIMER0_IRQHandler(void){
   uint16ToCharArray(Humidity, Humi, 4);
   uint16ToCharArray(Moisture, Mois, 4);
   uint16ToCharArray(Temperature, Temp, 4);
-  char data_sensor[18] = {address[0], address[1], address[2], address[3], address[4],
-                                                           Mois[0], Mois[1], Mois[2],
-                                                           Temp[0], Temp[1], Temp[2],
-                                                           Humi[0], Humi[1], Humi[2],
-                                                           Cell[0], Cell[1], Cell[2]};
-  /* Calculate Checksum */
-  uint16_t checksum = calculateChecksum(data_sensor, sizeof(data_sensor));
-  char checkSum[3];
-  checkSum[0] = checksum >> 8;
-  checkSum[1] = checksum & 0xFF;
+  char data_sensor[17] = {address[0], address[1], address[2], address[3],
+                                               Mois[0], Mois[1], Mois[2],
+                                               Temp[0], Temp[1], Temp[2],
+                                               Humi[0], Humi[1], Humi[2],
+                                               Cell[0], Cell[1], Cell[2]};
+  /* Calculate Lrc */
+  char lrc = calculateLrc(data_sensor, sizeof(data_sensor));
 
-  char dataTransmit[20] = {address[0], address[1], address[2], address[3], address[4],
-                                                             Mois[0], Mois[1], Mois[2],
-                                                             Temp[0], Temp[1], Temp[2],
-                                                             Humi[0], Humi[1], Humi[2],
-                                                             Cell[0], Cell[1], Cell[2],
-                                                             checkSum[0], checkSum[1]};
+  char dataTransmit[18] = {address[0], address[1], address[2], address[3],
+                                                Mois[0], Mois[1], Mois[2],
+                                                Temp[0], Temp[1], Temp[2],
+                                                Humi[0], Humi[1], Humi[2],
+                                                Cell[0], Cell[1], Cell[2],
+                                                                     lrc};
 
   /* Transmit data sensor */
   transmitData(dataTransmit, sizeof(dataTransmit)-1);
 
   uint32_t k = 10000000; /* Wait for a period of time to receive a signal response from the station */
-    char response;
+    char response = 0;
     while (1){
         k--;
         if( USART0->STATUS & USART_STATUS_RXDATAV ){

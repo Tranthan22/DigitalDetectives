@@ -36,14 +36,11 @@
  ******************************************************************************/
 
 // <<< sl:start pin_tool >>>
+
 // <timer> USTIMER
 // $[TIMER_USTIMER]
-#ifndef USTIMER_PERIPHERAL                      
-#define USTIMER_PERIPHERAL                       TIMER0
-#endif
-#ifndef USTIMER_PERIPHERAL_NO                   
-#define USTIMER_PERIPHERAL_NO                    0
-#endif
+#define USTIMER_PERIPHERAL              TIMER0
+#define USTIMER_PERIPHERAL_NO           0
 // [TIMER_USTIMER]$
 
 // <<< sl:end pin_tool >>>
