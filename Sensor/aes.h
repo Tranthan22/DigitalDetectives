@@ -2,7 +2,7 @@
  * aes.h
  *
  *  Created on: Aug 17, 2023
- *      Author: jengp
+ *      Author: PhongPham
  */
 
 #ifndef AES_H_
