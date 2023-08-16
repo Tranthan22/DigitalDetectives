@@ -46,7 +46,7 @@ void letimer0Disable(void){
 
 void batteryLevel(uint8_t* count, uint16_t* battery) {
     (*count)++;
-    if (*count == 5) {
+    if (*count == 200) {
         *battery = *battery - 1;
         *count = 0;
     }
