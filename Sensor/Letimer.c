@@ -72,12 +72,12 @@ void LETIMER0_IRQHandler(void){
   /* Get battery level */
   batteryLevel(&count, &battery);
   uint16_t batLevel = battery;
-  uint16ToCharArray(batLevel, Cell, 4);
-
+ 
   /* Create a data string */
   uint16ToCharArray(Humidity, Humi, 4);
   uint16ToCharArray(Moisture, Mois, 4);
   uint16ToCharArray(Temperature, Temp, 4);
+  uint16ToCharArray(batLevel, Cell, 4);
   char data_sensor[17] = {address[0], address[1], address[2], address[3],
                                                Mois[0], Mois[1], Mois[2],
                                                Temp[0], Temp[1], Temp[2],
