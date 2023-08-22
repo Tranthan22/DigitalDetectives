@@ -121,6 +121,16 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_emu.h</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.1/platform/emlib/inc/em_eusart.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_eusart.h</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.1/platform/emlib/inc/em_eusart_compat.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_eusart_compat.h</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.1/platform/emlib/inc/em_gpio.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_gpio.h</locationURI>
@@ -199,6 +209,11 @@
 			<name>gecko_sdk_4.3.1/platform/emlib/src/em_emu.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_emu.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.1/platform/emlib/src/em_eusart.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_eusart.c</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.1/platform/emlib/src/em_gpio.c</name>
@@ -336,6 +351,11 @@
 			<locationURI>STUDIO_SDK_LOC/platform/service/device_init/inc/sl_device_init_emu.h</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.1/platform/service/device_init/inc/sl_device_init_hfrco.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/device_init/inc/sl_device_init_hfrco.h</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.1/platform/service/device_init/inc/sl_device_init_hfxo.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/device_init/inc/sl_device_init_hfxo.h</locationURI>
@@ -359,6 +379,11 @@
 			<name>gecko_sdk_4.3.1/platform/service/device_init/src/sl_device_init_emu_s2.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/service/device_init/src/sl_device_init_emu_s2.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.1/platform/service/device_init/src/sl_device_init_hfrco.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/service/device_init/src/sl_device_init_hfrco.c</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.1/platform/service/device_init/src/sl_device_init_hfxo_s2.c</name>
@@ -639,11 +664,6 @@
 			<name>gecko_sdk_4.3.1/platform/Device/SiliconLabs/EFR32MG24/Include/efr32mg24_wdog.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/Device/SiliconLabs/EFR32MG24/Include/efr32mg24_wdog.h</locationURI>
-		</link>
-		<link>
-			<name>gecko_sdk_4.3.1/platform/Device/SiliconLabs/EFR32MG24/Include/efr32mg24b210f1536im48.h</name>
-			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/Device/SiliconLabs/EFR32MG24/Include/efr32mg24b210f1536im48.h</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.1/platform/Device/SiliconLabs/EFR32MG24/Include/em_device.h</name>

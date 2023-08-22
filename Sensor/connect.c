@@ -18,7 +18,7 @@ void connectToStation(void){
    /* Nhận phản hồi từ Station xem có được ghép đôi? */
    char response[4];
    for (uint8_t i=0 ; i<4; i++){
-       response[i] = USART_Rx(USART0);
+       response[i] = EUSART_Rx(EUSART0);
    }
 
    /* Station phản hổi được ghép kèm theo địa chỉ Station */

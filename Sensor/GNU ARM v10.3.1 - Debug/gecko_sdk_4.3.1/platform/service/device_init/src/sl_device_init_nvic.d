@@ -54,12 +54,12 @@ gecko_sdk_4.3.1/platform/service/device_init/src/sl_device_init_nvic.o: \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\autogen/sl_component_catalog.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\autogen/sl_component_catalog.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_core.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_core_generic.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_common.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_assert.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\config/emlib_core_debug_config.h
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\config/emlib_core_debug_config.h
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_status.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\device\siliconlabs\efr32mg24\include\em_device.h:
@@ -114,9 +114,9 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\device\siliconlabs\efr
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\autogen/sl_component_catalog.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\autogen/sl_component_catalog.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_core.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_core_generic.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_common.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_assert.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\config/emlib_core_debug_config.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\config/emlib_core_debug_config.h:

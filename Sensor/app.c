@@ -4,7 +4,6 @@ void app_init(void)
 {
   uartInit();
 
-  CMU_ClockEnable(cmuClock_GPIO, true);
   GPIO_PinModeSet(BUTTON0_PORT, BUTTON0_PIN, gpioModeInput, 1);
   GPIO_PinModeSet(LED0_PORT, LED0_PIN, gpioModePushPull, 0);
   GPIO_PinModeSet(LED1_PORT, LED1_PIN, gpioModePushPull, 0);

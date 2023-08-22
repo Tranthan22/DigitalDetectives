@@ -5,6 +5,7 @@
 #include "sl_board_init.h"
 #include "sl_device_init_dcdc.h"
 #include "sl_device_init_lfxo.h"
+#include "sl_device_init_hfrco.h"
 #include "sl_device_init_hfxo.h"
 #include "sl_device_init_clocks.h"
 #include "sl_device_init_emu.h"
@@ -19,6 +20,7 @@ void sl_platform_init(void)
   sl_board_preinit();
   sl_device_init_dcdc();
   sl_device_init_lfxo();
+  sl_device_init_hfrco();
   sl_device_init_hfxo();
   sl_device_init_clocks();
   sl_device_init_emu();

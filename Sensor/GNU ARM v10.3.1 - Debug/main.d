@@ -1,6 +1,6 @@
 main.o: ../main.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\toolchain\inc\sl_gcc_preinclude.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\autogen/sl_component_catalog.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\autogen/sl_component_catalog.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\service\system\inc\sl_system_init.h \
  ../app.h ../iadc.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_iadc.h \
@@ -63,7 +63,7 @@ main.o: ../main.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_core_generic.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_common.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_assert.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\config/emlib_core_debug_config.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\config/emlib_core_debug_config.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_enum.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_system.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_system_generic.h \
@@ -71,19 +71,21 @@ main.o: ../main.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_cmu_compat.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\sli_em_cmu.h \
  ../uart.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_usart.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_eusart.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_eusart_compat.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_gpio.h \
- ../Letimer.h ../DHT22.h \
+ ../Letimer.h \
+ c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_letimer.h \
+ ../DHT22.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emdrv\ustimer\inc\ustimer.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emdrv\common\inc\ecode.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\config/ustimer_config.h \
- c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_letimer.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\config/ustimer_config.h \
  ../connect.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_emu.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_status.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\service\system\inc\sl_system_process_action.h
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\toolchain\inc\sl_gcc_preinclude.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\autogen/sl_component_catalog.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\autogen/sl_component_catalog.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\service\system\inc\sl_system_init.h:
 ../app.h:
 ../iadc.h:
@@ -147,7 +149,7 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_core.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_core_generic.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_common.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_assert.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\config/emlib_core_debug_config.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\config/emlib_core_debug_config.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_enum.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_system.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_system_generic.h:
@@ -155,14 +157,15 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_cmu.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_cmu_compat.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\sli_em_cmu.h:
 ../uart.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_usart.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_eusart.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_eusart_compat.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_gpio.h:
 ../Letimer.h:
+c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_letimer.h:
 ../DHT22.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emdrv\ustimer\inc\ustimer.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emdrv\common\inc\ecode.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\IoT\config/ustimer_config.h:
-c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_letimer.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\config/ustimer_config.h:
 ../connect.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\emlib\inc\em_emu.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk_2\platform\common\inc\sl_status.h:

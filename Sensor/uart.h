@@ -8,20 +8,18 @@
 #ifndef UART_H_
 #define UART_H_
 
-#include "em_usart.h"
+#include "em_eusart.h"
 #include "em_cmu.h"
 #include "em_gpio.h"
+#include "Letimer.h"
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
-#include <stdbool.h>
-#include <stdlib.h>
 
 void uartInit(void);
 void transmitData(char* dataArray, uint8_t length);
-void insertStringAtBeginning(char* inputArray, char* outputArray, char* stringToInsert);
-void concatenateArrays(const char* a, const char* b, const char* c, const char* d, char* sum);
 void uint16ToCharArray(uint16_t number, char* array, int arraySize);
 uint8_t calculateLrc(const char* array, int size);
+void receiveData(char *buffer);
+void EUSART1_RX_IRQHandler(void);
 
 #endif /* UART_H_ */
