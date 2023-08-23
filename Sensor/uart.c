@@ -47,7 +47,6 @@ void EUSART0_RX_IRQHandler(void)
   }
   EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
   EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
-  
 }
 
 void transmitData(char* dataArray, uint8_t length)
