@@ -17,7 +17,7 @@ void uartInit(void){
   CMU_ClockEnable(cmuClock_EUSART0, true);
 
   GPIO_PinModeSet(gpioPortA, 8, gpioModePushPull, 1); /*TX*/ /*F6*/
-  GPIO_PinModeSet(gpioPortA, 4, gpioModeInput, 0); /*RX - 4*/ /*F3*/
+  GPIO_PinModeSet(gpioPortA, 4, gpioModeInput   , 0); /*RX - 4*/ /*F3*/
   GPIO_PinModeSet(gpioPortB, 0, gpioModePushPull, 1);  /* VCOM */
 
   EUSART_UartInit_TypeDef init = EUSART_UART_INIT_DEFAULT_LF;
