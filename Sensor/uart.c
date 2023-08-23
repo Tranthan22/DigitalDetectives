@@ -37,17 +37,17 @@ void uartInit(void){
 
 void EUSART0_RX_IRQHandler(void)
 {
-
+  interrupt = 0;
   char respornse = EUSART0->RXDATA;
   if (respornse == '1'){
-      EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
+  
   }
   else if(respornse == '0'){
    transmitData(dataTransmit, sizeof(dataTransmit)-1);
-   EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
   }
   EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
-  interrupt = 0;
+  EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
+  
 }
 
 void transmitData(char* dataArray, uint8_t length)
