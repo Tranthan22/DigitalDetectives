@@ -9,7 +9,6 @@ C_SRCS += \
 ../connect.c \
 ../flash.c \
 ../iadc.c \
-../iadcScan.c \
 ../uart.c 
 
 OBJS += \
@@ -18,7 +17,6 @@ OBJS += \
 ./connect.o \
 ./flash.o \
 ./iadc.o \
-./iadcScan.o \
 ./uart.o 
 
 C_DEPS += \
@@ -27,7 +25,6 @@ C_DEPS += \
 ./connect.d \
 ./flash.d \
 ./iadc.d \
-./iadcScan.d \
 ./uart.d 
 
 
@@ -35,49 +32,42 @@ C_DEPS += \
 DHT22.o: ../DHT22.c subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: GNU ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"DHT22.d" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -I"C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\gecko_sdk_4.3.1\platform\Device\SiliconLabs\EFR32MG24\Include" -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"DHT22.d" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 Letimer.o: ../Letimer.c subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: GNU ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"Letimer.d" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -I"C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\gecko_sdk_4.3.1\platform\Device\SiliconLabs\EFR32MG24\Include" -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"Letimer.d" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 connect.o: ../connect.c subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: GNU ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"connect.d" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -I"C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\gecko_sdk_4.3.1\platform\Device\SiliconLabs\EFR32MG24\Include" -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"connect.d" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 flash.o: ../flash.c subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: GNU ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"flash.d" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -I"C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\gecko_sdk_4.3.1\platform\Device\SiliconLabs\EFR32MG24\Include" -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"flash.d" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 iadc.o: ../iadc.c subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: GNU ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"iadc.d" -MT"$@" -o "$@" "$<"
-	@echo 'Finished building: $<'
-	@echo ' '
-
-iadcScan.o: ../iadcScan.c subdir.mk
-	@echo 'Building file: $<'
-	@echo 'Invoking: GNU ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"iadcScan.d" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -I"C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\gecko_sdk_4.3.1\platform\Device\SiliconLabs\EFR32MG24\Include" -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"iadc.d" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
 uart.o: ../uart.c subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: GNU ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"uart.d" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -std=c99 '-DNDEBUG=1' -I"C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2\gecko_sdk_4.3.1\platform\Device\SiliconLabs\EFR32MG24\Include" -Os -Wall -ffunction-sections -fdata-sections -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -MMD -MP -MF"uart.d" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

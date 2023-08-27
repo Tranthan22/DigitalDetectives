@@ -9,7 +9,7 @@
 
 #define Time_underflow   10  /* 10s */
 extern char address[5];
-char dataTransmit[18] = {0};
+char dataTransmit[22];
 uint8_t interrupt = 0;
 uint16_t battery = 100;
 uint8_t count = 0;
@@ -45,6 +45,7 @@ void letimer0Disable(void){
 }
 
 void batteryLevel(uint8_t* count, uint16_t* battery) {
+
     (*count)++;
     if (*count == 5) {
         *battery = *battery - 1;
@@ -57,9 +58,9 @@ void LETIMER0_IRQHandler(void) {
     LETIMER_IntClear(LETIMER0, flags);
     interrupt++;
 
-    if(interrupt == 2){
+    if(interrupt == 2){ /* 20s */
 
-    char data_sensor[17] = {0};
+    char data_sensor[19] = {0};
     memcpy(data_sensor, address, sizeof(address));
 
     iadcStartsingle();
@@ -74,22 +75,23 @@ void LETIMER0_IRQHandler(void) {
     batteryLevel(&count, &battery);
     uint16_t batLevel = battery;
     uint16ToCharArray(batLevel, &data_sensor[13], 4);
-
-    char lrc = calculateLrc(data_sensor, sizeof(data_sensor));
+    data_sensor[16]='2'; data_sensor[17]='5';data_sensor[18]='9';
+    char lrc = calculateLrc(&data_sensor[3], 16);
 
     memcpy(dataTransmit, data_sensor, sizeof(data_sensor));
-    dataTransmit[16] = lrc;
-    dataTransmit[17] = 0;
 
-    transmitData(dataTransmit, sizeof(dataTransmit) - 1);
+    dataTransmit[19] = lrc;
+    dataTransmit[20] = 'E';
+
+    transmitData(dataTransmit, sizeof(dataTransmit)-1);
     EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
     EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
-
     }
     if(interrupt == 3){
+
         transmitData(dataTransmit, sizeof(dataTransmit)-1);
-        interrupt = 0;
         EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
+        interrupt = 0;
     }
 }
 

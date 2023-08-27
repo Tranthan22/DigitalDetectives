@@ -25,7 +25,7 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := IoT_Challenge
+BUILD_ARTIFACT_NAME := Node-Sensor_EM2
 BUILD_ARTIFACT_EXTENSION := axf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
@@ -36,34 +36,34 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 all: main-build
 
 # Main-build Target
-main-build: IoT_Challenge.axf
+main-build: Node-Sensor_EM2.axf
 
 # Tool invocations
-IoT_Challenge.axf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+Node-Sensor_EM2.axf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM C Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -T "IoT_Challenge.ld" -Xlinker --gc-sections -Xlinker -Map="IoT_Challenge.map" -mfpu=fpv5-sp-d16 -mfloat-abi=softfp --specs=nano.specs -o IoT_Challenge.axf "./DHT22.o" "./Letimer.o" "./connect.o" "./flash.o" "./iadc.o" "./iadcScan.o" "./uart.o" -Wl,--start-group -lgcc -lc -lnosys -Wl,--end-group
+	arm-none-eabi-gcc -mcpu=cortex-m33 -mthumb -T "Node-Sensor_EM2.ld" -Xlinker --gc-sections -Xlinker -Map="Node-Sensor_EM2.map" -mfpu=fpv5-sp-d16 -mfloat-abi=softfp --specs=nano.specs -o Node-Sensor_EM2.axf "./DHT22.o" "./Letimer.o" "./connect.o" "./flash.o" "./iadc.o" "./uart.o" -Wl,--start-group -lgcc -lc -lnosys -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-	@echo 'Building out file: IoT_Challenge.out'
-	arm-none-eabi-objcopy "IoT_Challenge.axf" "IoT_Challenge.out"
+	@echo 'Building out file: Node-Sensor_EM2.out'
+	arm-none-eabi-objcopy "Node-Sensor_EM2.axf" "Node-Sensor_EM2.out"
 	@echo ' '
 
-	@echo 'Building hex file: IoT_Challenge.hex'
-	arm-none-eabi-objcopy -O ihex "IoT_Challenge.axf" "IoT_Challenge.hex"
+	@echo 'Building hex file: Node-Sensor_EM2.hex'
+	arm-none-eabi-objcopy -O ihex "Node-Sensor_EM2.axf" "Node-Sensor_EM2.hex"
 	@echo ' '
 
-	@echo 'Building bin file: IoT_Challenge.bin'
-	arm-none-eabi-objcopy -O binary "IoT_Challenge.axf" "IoT_Challenge.bin"
+	@echo 'Building bin file: Node-Sensor_EM2.bin'
+	arm-none-eabi-objcopy -O binary "Node-Sensor_EM2.axf" "Node-Sensor_EM2.bin"
 	@echo ' '
 
-	@echo 'Building s37 file: IoT_Challenge.s37'
-	arm-none-eabi-objcopy -O srec "IoT_Challenge.axf" "IoT_Challenge.s37"
+	@echo 'Building s37 file: Node-Sensor_EM2.s37'
+	arm-none-eabi-objcopy -O srec "Node-Sensor_EM2.axf" "Node-Sensor_EM2.s37"
 	@echo ' '
 
 	@echo 'Running size tool'
-	arm-none-eabi-size "IoT_Challenge.axf" -A
+	arm-none-eabi-size "Node-Sensor_EM2.axf" -A
 	@echo ' '
 
 # Other Targets
@@ -71,7 +71,7 @@ clean:
 	-@$(foreach FILE, $(EXECUTABLES), $(shell $(RM) $(FILE)) )
 	-@$(foreach FILE, $(OBJS), $(shell $(RM) $(FILE)) )
 	-@$(foreach FILE, $(C_DEPS), $(shell $(RM) $(FILE)) )
-	-$(RM) IoT_Challenge.axf
+	-$(RM) Node-Sensor_EM2.axf
 	-@echo ' '
 
 .PHONY: all clean dependents main-build

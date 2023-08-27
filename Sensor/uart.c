@@ -7,13 +7,20 @@
 
 #include "uart.h"
 
+void gpioInit(void){
+  CMU_ClockEnable(cmuClock_GPIO, true);
+  GPIO_PinModeSet(BUTTON0_PORT, BUTTON0_PIN, gpioModeInput, 1);
+  GPIO_PinModeSet(LED0_PORT, LED0_PIN, gpioModePushPull, 0);
+  GPIO_PinModeSet(LED1_PORT, LED1_PIN, gpioModePushPull, 0);
+}
+
 void uartInit(void){
+
+  /* Select LFXO for the EUSART0 */
   CMU_LFXOInit_TypeDef lfxoInit = CMU_LFXOINIT_DEFAULT;
-  /* Select LFXO for the EUSART */
   CMU_LFXOInit(&lfxoInit);
   CMU_ClockSelectSet(cmuClock_EUSART0, cmuSelect_LFXO);
 
-  CMU_ClockEnable(cmuClock_GPIO, true);
   CMU_ClockEnable(cmuClock_EUSART0, true);
 
   GPIO_PinModeSet(gpioPortA, 8, gpioModePushPull, 1); /*TX*/ /*F6*/
@@ -33,21 +40,35 @@ void uartInit(void){
 
   NVIC_ClearPendingIRQ(EUSART0_RX_IRQn);
   NVIC_EnableIRQ(EUSART0_RX_IRQn);
+
 }
 
+uint8_t j = 0;
 void EUSART0_RX_IRQHandler(void)
 {
 
-  char respornse = EUSART0->RXDATA;
-  if (respornse == '1'){
-      EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
+  response[j] = EUSART0->RXDATA;
+  if ((response[j] != 'E')){
+      j++;
   }
-  else if(respornse == '0'){
-   transmitData(dataTransmit, sizeof(dataTransmit)-1);
-   EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
+  else {
+      if ( j == 1){
+          if (response[0] == '1'){
+              EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
+          }
+          else if (response[0] == '0'){
+              transmitData(dataTransmit, sizeof(dataTransmit)-1);
+              EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
+          }
+          j = 0;
+          interrupt = 0;
+      }
+      else {
+          j = 0;
+      }
   }
   EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
-  interrupt = 0;
+
 }
 
 void transmitData(char* dataArray, uint8_t length)
@@ -55,7 +76,6 @@ void transmitData(char* dataArray, uint8_t length)
   for (uint8_t i = 0; i < length; i++)
   {
       EUSART_Tx(EUSART0, dataArray[i]);
-
   }
 }
 
@@ -74,25 +94,6 @@ uint8_t calculateLrc(const char* array, int size) {
 }
 
 
-void receiveData(char *buffer) {
-    const int BUFLEN = 80;
-    int i;
-
-    for (i = 0; i < BUFLEN; ++i) buffer[i] = 0;
-
-    i = 0;
-
-    do {
-
-        buffer[i] = EUSART_Rx(EUSART0);
-
-        if (buffer[i] != '\r') {
-            i++;
-        } else {
-            break;
-        }
-    } while (i < BUFLEN);
-}
 
 
 

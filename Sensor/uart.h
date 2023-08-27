@@ -15,11 +15,13 @@
 #include <stdio.h>
 #include <string.h>
 
+void gpioInit(void);
 void uartInit(void);
 void transmitData(char* dataArray, uint8_t length);
 void uint16ToCharArray(uint16_t number, char* array, int arraySize);
 uint8_t calculateLrc(const char* array, int size);
-void receiveData(char *buffer);
 void EUSART1_RX_IRQHandler(void);
+
+extern char response[10];
 
 #endif /* UART_H_ */
