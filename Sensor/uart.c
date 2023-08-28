@@ -24,8 +24,8 @@ void uartInit(void){
   CMU_ClockEnable(cmuClock_EUSART0, true);
 
   GPIO_PinModeSet(gpioPortA, 8, gpioModePushPull, 1); /*TX*/ /*F6*/
-  GPIO_PinModeSet(gpioPortA, 4, gpioModeInput, 0); /*RX - 4*/ /*F3*/
-  GPIO_PinModeSet(gpioPortB, 0, gpioModePushPull, 1);  /* VCOM */
+  GPIO_PinModeSet(gpioPortA, 4, gpioModeInput, 0);    /*RX*/ /*F3*/
+  GPIO_PinModeSet(gpioPortB, 0, gpioModePushPull, 1); /* VCOM enable*/
 
   EUSART_UartInit_TypeDef init = EUSART_UART_INIT_DEFAULT_LF;
   init.baudrate = 9600;
@@ -63,9 +63,8 @@ void EUSART0_RX_IRQHandler(void)
           j = 0;
           interrupt = 0;
       }
-      else {
-          j = 0;
-      }
+      else j = 0;
+
   }
   EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
 
@@ -86,7 +85,6 @@ void uint16ToCharArray(uint16_t number, char* array, int arraySize) {
 
 uint8_t calculateLrc(const char* array, int size) {
     uint8_t lrc = 0;
-
     for (int i = 0; i < size; i++) {
         lrc ^= array[i];
     }
