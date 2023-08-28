@@ -24,7 +24,7 @@ void uartInit(void){
   CMU_ClockEnable(cmuClock_EUSART0, true);
 
   GPIO_PinModeSet(gpioPortA, 8, gpioModePushPull, 1); /*TX*/ /*F6*/
-  GPIO_PinModeSet(gpioPortA, 4, gpioModeInput   , 0); /*RX - 4*/ /*F3*/
+  GPIO_PinModeSet(gpioPortA, 4, gpioModeInput, 0); /*RX - 4*/ /*F3*/
   GPIO_PinModeSet(gpioPortB, 0, gpioModePushPull, 1);  /* VCOM */
 
   EUSART_UartInit_TypeDef init = EUSART_UART_INIT_DEFAULT_LF;
@@ -46,7 +46,6 @@ void uartInit(void){
 uint8_t j = 0;
 void EUSART0_RX_IRQHandler(void)
 {
-<<<<<<< HEAD
 
   response[j] = EUSART0->RXDATA;
   if ((response[j] != 'E')){
@@ -70,18 +69,6 @@ void EUSART0_RX_IRQHandler(void)
   }
   EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
 
-=======
-  interrupt = 0;
-  char respornse = EUSART0->RXDATA;
-  if (respornse == '1'){
-  
-  }
-  else if(respornse == '0'){
-   transmitData(dataTransmit, sizeof(dataTransmit)-1);
-  }
-  EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
-  EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
->>>>>>> afe32c1a5918479a119bd67b086a0965fdb34755
 }
 
 void transmitData(char* dataArray, uint8_t length)

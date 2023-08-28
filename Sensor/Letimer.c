@@ -8,8 +8,7 @@
 #include "Letimer.h"
 
 #define Time_underflow   10  /* 10s */
-extern char address[5];
-char dataTransmit[22];
+char dataTransmit[21];
 uint8_t interrupt = 0;
 uint16_t battery = 100;
 uint8_t count = 0;
@@ -54,44 +53,44 @@ void batteryLevel(uint8_t* count, uint16_t* battery) {
 }
 
 void LETIMER0_IRQHandler(void) {
+
     uint32_t flags = LETIMER_IntGet(LETIMER0);
     LETIMER_IntClear(LETIMER0, flags);
     interrupt++;
 
-    if(interrupt == 2){ /* 20s */
+    if (interrupt == 2) { /* Every 20 seconds */
+        iadcStartsingle();
+        uint16_t Moisture = getMoisture();
 
-    char data_sensor[19] = {0};
-    memcpy(data_sensor, address, sizeof(address));
+        DHT_DataTypedef DHT_data;
+        DHT_GetData(&DHT_data);
 
-    iadcStartsingle();
-    uint16_t Moisture = getMoisture();
-    uint16ToCharArray(Moisture, &data_sensor[4], 4);
+        batteryLevel(&count, &battery);
+        uint16_t batLevel = battery;
 
-    DHT_DataTypedef DHT_data;
-    DHT_GetData(&DHT_data);
-    uint16ToCharArray(DHT_data.Temperature, &data_sensor[7], 4);
-    uint16ToCharArray(DHT_data.Humidity, &data_sensor[10], 4);
+        dataTransmit[2] = 0x17;
+        dataTransmit[3] = '1';
+        uint16ToCharArray(Moisture, &dataTransmit[4], 4);
+        uint16ToCharArray(DHT_data.Temperature, &dataTransmit[7], 4);
+        uint16ToCharArray(DHT_data.Humidity, &dataTransmit[10], 4);
+        uint16ToCharArray(batLevel, &dataTransmit[13], 4);
+        dataTransmit[16] = '2';
+        dataTransmit[17] = '5';
+        dataTransmit[18] = '9';
+        char lrc = calculateLrc(&dataTransmit[3], 16);
+        dataTransmit[19] = lrc;
+        dataTransmit[20] = 'E';
 
-    batteryLevel(&count, &battery);
-    uint16_t batLevel = battery;
-    uint16ToCharArray(batLevel, &data_sensor[13], 4);
-    data_sensor[16]='2'; data_sensor[17]='5';data_sensor[18]='9';
-    char lrc = calculateLrc(&data_sensor[3], 16);
-
-    memcpy(dataTransmit, data_sensor, sizeof(data_sensor));
-
-    dataTransmit[19] = lrc;
-    dataTransmit[20] = 'E';
-
-    transmitData(dataTransmit, sizeof(dataTransmit)-1);
-    EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
-    EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
+        transmitData(dataTransmit, sizeof(dataTransmit));
+        EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
+        EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
     }
-    if(interrupt == 3){
 
-        transmitData(dataTransmit, sizeof(dataTransmit)-1);
+    if (interrupt == 3) {
+        transmitData(dataTransmit, sizeof(dataTransmit));
         EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
         interrupt = 0;
     }
 }
+
 
