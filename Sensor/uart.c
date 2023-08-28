@@ -52,7 +52,7 @@ void EUSART0_RX_IRQHandler(void)
       j++;
   }
   else {
-      if ( j == 1){
+      if (j == 1){
           if (response[0] == '1'){
               EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
           }
