@@ -1,7 +1,7 @@
 /*
  * adc.h
  *
- *  Created on: Jun 18, 2023
+ *  Created on: Jun 10, 2023
  *      Author: PhongPham
  */
 
@@ -14,7 +14,6 @@
 
 
 void iadcInit(void);
-void iadcStartsingle(void);
 uint16_t getMoisture(void);
 
 #endif /* IADC_H_ */

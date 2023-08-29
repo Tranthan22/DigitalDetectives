@@ -58,7 +58,6 @@ void LETIMER0_IRQHandler(void) {
     interrupt++;
 
     if (interrupt == 2) { /* Every 20 seconds */
-        iadcStartsingle();
         uint16_t Moisture = getMoisture();
 
         DHT_DataTypedef DHT_data;
