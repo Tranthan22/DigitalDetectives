@@ -26,10 +26,10 @@ void connectToStation(void){
    /* Station phản hổi được ghép kèm theo địa chỉ Station */
 
        dataTransmit[0] = response[2]; dataTransmit[1] = response[3];
-       GPIO_PinOutToggle(GPIO_PORTB, 2); /* Bật LED0 (3s): Thông báo kết nối thành công */
+       GPIO_PinOutToggle(LED0_PORT, LED0_PIN); /* Bật LED0 (5s): Thông báo kết nối thành công */
        USTIMER_Init();
-       USTIMER_DelayIntSafe(3000000);
-       GPIO_PinOutToggle(GPIO_PORTB, 2);
+       USTIMER_DelayIntSafe(5000000);
+       GPIO_PinOutToggle(LED0_PORT, LED0_PIN);
        USTIMER_DeInit();
        break;
 
@@ -37,7 +37,7 @@ void connectToStation(void){
    if(i == 2 && response[0] == '1' && response[1] == '0'){
       /* Station phản hổi không được ghép --> Vào EM4 */
 
-          GPIO_PinOutToggle(GPIO_PORTB, 4); /* Bật LED1 (3s): Thông báo kết nối không thành công */
+          GPIO_PinOutToggle(LED1_PORT, LED1_PIN); /* Bật LED1 (3s): Thông báo kết nối không thành công */
           USTIMER_Init();
           USTIMER_DelayIntSafe(3000000);
           USTIMER_DeInit();

@@ -29,7 +29,6 @@ int main(void)
       EMU_EnterEM2(true);
       app_process_action();
 
-
 #if defined(SL_CATALOG_POWER_MANAGER_PRESENT)
 
     sl_power_manager_sleep();
