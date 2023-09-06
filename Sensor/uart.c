@@ -23,16 +23,15 @@ void uartInit(void){
 
   CMU_ClockEnable(cmuClock_EUSART0, true);
 
-  GPIO_PinModeSet(gpioPortA, 8, gpioModePushPull, 1); /*TX*/ /*F6*/
-  GPIO_PinModeSet(gpioPortA, 4, gpioModeInput, 0);    /*RX*/ /*F3*/
-  GPIO_PinModeSet(gpioPortB, 0, gpioModePushPull, 1); /* VCOM enable*/
+  GPIO_PinModeSet(TX_PORT, TX_PIN, gpioModePushPull, 1); /*F6*/
+  GPIO_PinModeSet(RX_PORT, RX_PIN, gpioModeInput, 0);    /*F3*/
+  GPIO_PinModeSet(VCOM_Enable_PORT, VCOM_Enable_PIN, gpioModePushPull, 1); /* VCOM enable*/
 
   EUSART_UartInit_TypeDef init = EUSART_UART_INIT_DEFAULT_LF;
-  init.baudrate = 9600;
-  GPIO->EUSARTROUTE[0].TXROUTE = (gpioPortA << _GPIO_EUSART_TXROUTE_PORT_SHIFT)
-      | (8 << _GPIO_EUSART_TXROUTE_PIN_SHIFT);
-  GPIO->EUSARTROUTE[0].RXROUTE = (gpioPortA << _GPIO_EUSART_RXROUTE_PORT_SHIFT)
-      | (4 << _GPIO_EUSART_RXROUTE_PIN_SHIFT);
+  GPIO->EUSARTROUTE[0].TXROUTE = (TX_PORT << _GPIO_EUSART_TXROUTE_PORT_SHIFT)
+      | (TX_PIN << _GPIO_EUSART_TXROUTE_PIN_SHIFT);
+  GPIO->EUSARTROUTE[0].RXROUTE = (RX_PORT << _GPIO_EUSART_RXROUTE_PORT_SHIFT)
+      | (RX_PIN << _GPIO_EUSART_RXROUTE_PIN_SHIFT);
 
   GPIO->EUSARTROUTE[0].ROUTEEN = GPIO_EUSART_ROUTEEN_RXPEN | GPIO_EUSART_ROUTEEN_TXPEN;
 
@@ -57,7 +56,7 @@ void EUSART0_RX_IRQHandler(void)
               EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
           }
           else if (response[0] == '0'){
-              transmitData(dataTransmit, sizeof(dataTransmit)-1);
+              transmitData(dataTransmit, sizeof(dataTransmit));
               EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
           }
           j = 0;

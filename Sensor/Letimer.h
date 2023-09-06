@@ -9,8 +9,6 @@
 #define LETIMER_H_
 
 #include "em_letimer.h"
-#include "em_cmu.h"
-#include "em_gpio.h"
 #include "uart.h"
 #include "DHT22.h"
 #include "iadc.h"

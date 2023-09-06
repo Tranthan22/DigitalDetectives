@@ -12,7 +12,7 @@ char response[10];
 void connectToStation(void){
 
    char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
-   transmitData(dataToConnect, sizeof (dataToConnect));
+   transmitData(dataToConnect, sizeof(dataToConnect));
 
    /* Nhận phản hồi từ Station xem có được ghép đôi? */
    uint8_t i;
