@@ -20,7 +20,6 @@ void uartInit(void){
   CMU_LFXOInit_TypeDef lfxoInit = CMU_LFXOINIT_DEFAULT;
   CMU_LFXOInit(&lfxoInit);
   CMU_ClockSelectSet(cmuClock_EUSART0, cmuSelect_LFXO);
-
   CMU_ClockEnable(cmuClock_EUSART0, true);
 
   GPIO_PinModeSet(TX_PORT, TX_PIN, gpioModePushPull, 1); /*F6*/

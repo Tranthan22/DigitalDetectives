@@ -5,6 +5,7 @@ void app_init(void)
 
   gpioInit();
   uartInit();
+
   while(1){
       /* Nhấn BUTTON_0 để kết nối tới Station */
       if(!GPIO_PinInGet(BUTTON0_PORT, BUTTON0_PIN)){

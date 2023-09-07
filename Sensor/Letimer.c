@@ -66,20 +66,17 @@ void LETIMER0_IRQHandler(void) {
         batteryLevel(&count, &battery);
         uint16_t batLevel = battery;
 
-        dataTransmit[2] = 0x17;
-        dataTransmit[3] = '1';
+        dataTransmit[2] = 0x17; dataTransmit[3] = '1';
         uint16ToCharArray(Moisture, &dataTransmit[4], 4);
         uint16ToCharArray(DHT_data.Temperature, &dataTransmit[7], 4);
         uint16ToCharArray(DHT_data.Humidity, &dataTransmit[10], 4);
         uint16ToCharArray(batLevel, &dataTransmit[13], 4);
-        dataTransmit[16] = '2';
-        dataTransmit[17] = '5';
-        dataTransmit[18] = '9';
-        char lrc = calculateLrc(&dataTransmit[3], 16);
-        dataTransmit[19] = lrc;
-        dataTransmit[20] = 'E';
+        dataTransmit[16] = '2'; dataTransmit[17] = '5';
+        dataTransmit[18] = '9'; dataTransmit[20] = 'E';
+        dataTransmit[19] = calculateLrc(&dataTransmit[3], 16);
 
         transmitData(dataTransmit, sizeof(dataTransmit));
+
         EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
         EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
     }
