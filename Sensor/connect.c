@@ -20,7 +20,7 @@ void connectToStation(void){
      for (i=0 ; i< 10; i++){
          response[i] = EUSART_Rx(EUSART0);
          if (response[i] == 'E')
-           break;
+         break;
    }
    if(i == 4 && response[0] == '1' && response[1] == '1'){
    /* Station phản hổi được ghép kèm theo địa chỉ Station */
