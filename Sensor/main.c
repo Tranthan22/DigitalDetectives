@@ -1,6 +1,9 @@
 #include "sl_component_catalog.h"
 #include "sl_system_init.h"
+
 #include "app.h"
+#include "em_emu.h"
+
 
 #if defined(SL_CATALOG_POWER_MANAGER_PRESENT)
 #include "sl_power_manager.h"

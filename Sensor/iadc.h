@@ -9,6 +9,7 @@
 #define IADC_H_
 
 #include "em_iadc.h"
+#include "em_cmu.h"
 #include "uart.h"
 
 

@@ -7,12 +7,7 @@
 
 #include "uart.h"
 
-void gpioInit(void){
-  CMU_ClockEnable(cmuClock_GPIO, true);
-  GPIO_PinModeSet(BUTTON0_PORT, BUTTON0_PIN, gpioModeInput, 1);
-  GPIO_PinModeSet(LED0_PORT, LED0_PIN, gpioModePushPull, 0);
-  GPIO_PinModeSet(LED1_PORT, LED1_PIN, gpioModePushPull, 0);
-}
+char response[10];
 
 void uartInit(void){
 
@@ -61,6 +56,27 @@ void EUSART0_RX_IRQHandler(void)
           j = 0;
           interrupt = 0;
       }
+      else if (j==4 && response[0] == '1' && response[1] == '1'){
+          /* Station phản hổi được ghép kèm theo địa chỉ Station */
+              letimer0Disable(); /* Dừng Timer xử lý sự kiện kết nối */
+              dataTransmit[0] = response[2]; dataTransmit[1] = response[3];
+              GPIO_PinOutToggle(LED0_PORT, LED0_PIN); /* Bật LED0 (3s): Thông báo kết nối thành công */
+              USTIMER_Init();
+              USTIMER_DelayIntSafe(3000000);
+              GPIO_PinOutToggle(LED0_PORT, LED0_PIN);
+              USTIMER_DeInit();
+              interrupt = 0;
+      }
+      else if(j==2 && response[0] == '1' && response[1] == '0'){
+          /* Station phản hổi không được ghép */
+              letimer0Disable();/* Dừng Timer xử lý sự kiện kết nối */
+              GPIO_PinOutToggle(LED1_PORT, LED1_PIN); /* Bật LED1 (3s): Thông báo kết nối không thành công */
+              USTIMER_Init();
+              USTIMER_DelayIntSafe(3000000);
+              USTIMER_DeInit();
+              interrupt = 0;
+      }
+
       else j = 0;
 
   }

@@ -54,7 +54,7 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\autogen/sl_component_catalog.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\autogen/sl_component_catalog.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_common.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_system.h \
@@ -63,7 +63,7 @@ autogen/sl_event_handler.o: ../autogen/sl_event_handler.c \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core_generic.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\config/emlib_core_debug_config.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\config/emlib_core_debug_config.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\device_init\inc\sl_device_init_nvic.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_status.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\hardware\board\inc\sl_board_init.h \
@@ -132,7 +132,7 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\autogen/sl_component_catalog.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\autogen/sl_component_catalog.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_common.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_system.h:
@@ -141,7 +141,7 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_bus.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core_generic.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\config/emlib_core_debug_config.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\config/emlib_core_debug_config.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\device_init\inc\sl_device_init_nvic.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_status.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\hardware\board\inc\sl_board_init.h:

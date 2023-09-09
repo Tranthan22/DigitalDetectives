@@ -8,41 +8,72 @@
 
 #include "connect.h"
 
-char response[10];
-void connectToStation(void){
+uint8_t work = 0;
 
-   char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
-   transmitData(dataToConnect, sizeof(dataToConnect));
+void gpioSetup(void){
 
-   /* Nhận phản hồi từ Station xem có được ghép đôi? */
-   uint8_t i;
-   while(1){
-     for (i=0 ; i< 10; i++){
-         response[i] = EUSART_Rx(EUSART0);
-         if (response[i] == 'E')
-         break;
-   }
-   if(i == 4 && response[0] == '1' && response[1] == '1'){
-   /* Station phản hổi được ghép kèm theo địa chỉ Station */
+  CMU_ClockEnable(cmuClock_GPIO, true);
+  GPIO_PinModeSet(LED0_PORT, LED0_PIN, gpioModePushPull, 0);
+  GPIO_PinModeSet(LED1_PORT, LED1_PIN, gpioModePushPull, 0);
 
-       dataTransmit[0] = response[2]; dataTransmit[1] = response[3];
-       GPIO_PinOutToggle(LED0_PORT, LED0_PIN); /* Bật LED0 (5s): Thông báo kết nối thành công */
-       USTIMER_Init();
-       USTIMER_DelayIntSafe(5000000);
-       GPIO_PinOutToggle(LED0_PORT, LED0_PIN);
-       USTIMER_DeInit();
-       break;
+  /*Configure Button PB0 as input and enable interrupt*/
+  GPIO_PinModeSet(BUTTON0_PORT, BUTTON0_PIN, gpioModeInputPull, 1);
+  GPIO_ExtIntConfig(BUTTON0_PORT,
+                    BUTTON0_PIN,
+                    BUTTON0_PIN,
+                    false,
+                    true,
+                    true);
 
-   }
-   if(i == 2 && response[0] == '1' && response[1] == '0'){
-      /* Station phản hổi không được ghép --> Vào EM4 */
+  /*Configure Button PB1 as input and enable interrupt*/
+  GPIO_PinModeSet(BUTTON1_PORT, BUTTON1_PIN, gpioModeInputPull, 1);
+  GPIO_ExtIntConfig(BUTTON1_PORT,
+                    BUTTON1_PIN,
+                    BUTTON1_PIN,
+                    false,
+                    true,
+                    true);
 
-          GPIO_PinOutToggle(LED1_PORT, LED1_PIN); /* Bật LED1 (3s): Thông báo kết nối không thành công */
-          USTIMER_Init();
-          USTIMER_DelayIntSafe(3000000);
-          USTIMER_DeInit();
-          EMU_EnterEM4();
-
-        }
-    }
+  NVIC_ClearPendingIRQ(GPIO_ODD_IRQn);
+  NVIC_EnableIRQ(GPIO_ODD_IRQn);
 }
+
+
+void GPIO_ODD_IRQHandler(void)
+{
+
+  uint32_t interruptMask = GPIO_IntGet();
+  GPIO_IntClear(interruptMask);
+
+  /*Check if button 0 was pressed --> Connect to Station*/
+  if (interruptMask & (1 << BUTTON0_PIN))
+  {
+    if(work==1) {
+        letimer0Disable();
+        work = 0;
+    }
+    char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
+    transmitData(dataToConnect, sizeof(dataToConnect));
+    EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
+    letimer0Enable(); /*Bật Timer xử lý sự kiện kết nối*/
+
+  }
+
+  /*Check if button 1 was pressed --> Start/Stop*/
+  else if (interruptMask & (1 << BUTTON1_PIN))
+  {
+      if(work==0){
+          letimer0Enable();
+          work = 1;
+          GPIO_PinOutSet(LED1_PORT, LED1_PIN);
+      }
+      else {
+          letimer0Disable();
+          work = 0;
+          GPIO_PinOutClear(LED1_PORT, LED1_PIN);
+      }
+  }
+}
+
+
+

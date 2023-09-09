@@ -16,16 +16,11 @@
 #define BUTTON0_PIN         1
 #define BUTTON1_PORT        gpioPortB
 #define BUTTON1_PIN         3
-#define TX_PORT             gpioPortA
-#define TX_PIN              8
-#define RX_PORT             gpioPortA
-#define RX_PIN              4
-#define VCOM_Enable_PORT    gpioPortB
-#define VCOM_Enable_PIN     0
 
 #include "uart.h"
 #include "em_emu.h"
 
-void connectToStation(void);
+void gpioSetup(void);
+void GPIO_ODD_IRQHandler(void);
 
 #endif /* CONNECT_H_ */

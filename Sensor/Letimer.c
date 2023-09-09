@@ -7,11 +7,12 @@
 
 #include "Letimer.h"
 
-#define Time_underflow   10  /* 10s */
+#define Time_underflow   5  /* 5s */
 char dataTransmit[21];
 uint8_t interrupt = 0;
 uint16_t battery = 100;
 uint8_t count = 0;
+extern uint8_t work;
 
 void letimer0Init(void){
 
@@ -56,8 +57,21 @@ void LETIMER0_IRQHandler(void) {
     uint32_t flags = LETIMER_IntGet(LETIMER0);
     LETIMER_IntClear(LETIMER0, flags);
     interrupt++;
-
-    if (interrupt == 2) { /* Every 20 seconds */
+    if(work==0 && interrupt<=3){
+        EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
+        char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
+        transmitData(dataToConnect, sizeof(dataToConnect));
+        EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
+    }
+    else if(work==0 && interrupt==4){
+        GPIO_PinOutToggle(LED1_PORT, LED1_PIN); /* Bật LED1 (3s): Thông báo kết nối không thành công */
+        USTIMER_Init();
+        USTIMER_DelayIntSafe(3000000);
+        USTIMER_DeInit();
+        interrupt = 0;
+        letimer0Disable();
+    }
+    else if (work==1 && interrupt == 4) { /* Every 20 seconds */
         uint16_t Moisture = getMoisture();
 
         DHT_DataTypedef DHT_data;
@@ -77,11 +91,10 @@ void LETIMER0_IRQHandler(void) {
 
         transmitData(dataTransmit, sizeof(dataTransmit));
 
-        EUSART_IntClear(EUSART0, EUSART_IF_RXFL);
         EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
     }
 
-    if (interrupt == 3) {
+    else if (work==1 && interrupt == 6) {
         transmitData(dataTransmit, sizeof(dataTransmit));
         EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
         interrupt = 0;

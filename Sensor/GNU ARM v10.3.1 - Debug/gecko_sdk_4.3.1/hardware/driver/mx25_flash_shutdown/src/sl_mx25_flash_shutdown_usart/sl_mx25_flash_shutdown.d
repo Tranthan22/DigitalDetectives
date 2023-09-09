@@ -54,14 +54,14 @@ gecko_sdk_4.3.1/hardware/driver/mx25_flash_shutdown/src/sl_mx25_flash_shutdown_u
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\autogen/sl_component_catalog.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\autogen/sl_component_catalog.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_bus.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core_generic.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_common.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\config/emlib_core_debug_config.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\config/emlib_core_debug_config.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_enum.h \
@@ -70,7 +70,7 @@ gecko_sdk_4.3.1/hardware/driver/mx25_flash_shutdown/src/sl_mx25_flash_shutdown_u
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\udelay\inc\sl_udelay.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\hardware\driver\mx25_flash_shutdown\inc\sl_mx25_flash_shutdown_usart\sl_mx25_flash_shutdown.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\config/sl_mx25_flash_shutdown_usart_config.h
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\config/sl_mx25_flash_shutdown_usart_config.h
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\em_device.h:
@@ -125,14 +125,14 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\autogen/sl_component_catalog.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\autogen/sl_component_catalog.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_bus.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core_generic.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_common.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\config/emlib_core_debug_config.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\config/emlib_core_debug_config.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_enum.h:
@@ -141,4 +141,4 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_usart.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\udelay\inc\sl_udelay.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\hardware\driver\mx25_flash_shutdown\inc\sl_mx25_flash_shutdown_usart\sl_mx25_flash_shutdown.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Backup\config/sl_mx25_flash_shutdown_usart_config.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\config/sl_mx25_flash_shutdown_usart_config.h:
