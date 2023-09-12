@@ -20,9 +20,9 @@
 #include <stdio.h>
 
 void uartInit(void);
-void transmitData(char* dataArray, uint8_t length);
-void uint16ToCharArray(uint16_t number, char* array, int arraySize);
-uint8_t calculateLrc(const char* array, int size);
+void transmitData(unsigned char* dataArray, uint8_t length);
+void uint16ToUnsignedCharArray(uint16_t number, unsigned char* array, int arraySize);
+uint8_t calculateLrc(const unsigned char* array, int size);
 void EUSART0_RX_IRQHandler(void);
 
 

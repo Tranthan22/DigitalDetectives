@@ -54,7 +54,7 @@ gecko_sdk_4.3.1/platform/service/udelay/src/sl_udelay.o: \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h \
- C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\autogen/sl_component_catalog.h \
+ C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_Final\autogen/sl_component_catalog.h \
  c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\service\udelay\inc\sl_udelay.h:
@@ -110,5 +110,5 @@ c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_prs_signals.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_dma_descriptor.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\efr32mg24\include\efr32mg24_ldmaxbar_defines.h:
-C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_EM2_Update_Final\autogen/sl_component_catalog.h:
+C:\Users\jengp\SimplicityStudio\v5_workspace\Node-Sensor_Final\autogen/sl_component_catalog.h:
 c:\users\jengp\simplicitystudio\sdks\gecko_sdk\platform\common\inc\sl_assert.h:

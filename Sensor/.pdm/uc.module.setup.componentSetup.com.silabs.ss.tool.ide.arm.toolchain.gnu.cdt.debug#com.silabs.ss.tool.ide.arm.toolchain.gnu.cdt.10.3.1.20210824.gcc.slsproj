@@ -159,6 +159,7 @@
           <file name="em_letimer.h" uri="studio:/sdk/platform/emlib/inc/em_letimer.h"/>
           <file name="em_msc.h" uri="studio:/sdk/platform/emlib/inc/em_msc.h"/>
           <file name="em_msc_compat.h" uri="studio:/sdk/platform/emlib/inc/em_msc_compat.h"/>
+          <file name="em_se.h" uri="studio:/sdk/platform/emlib/inc/em_se.h"/>
           <file name="em_syscfg.h" uri="studio:/sdk/platform/emlib/inc/em_syscfg.h"/>
           <file name="em_system.h" uri="studio:/sdk/platform/emlib/inc/em_system.h"/>
           <file name="em_system_generic.h" uri="studio:/sdk/platform/emlib/inc/em_system_generic.h"/>
@@ -174,6 +175,7 @@
           <file name="em_iadc.c" uri="studio:/sdk/platform/emlib/src/em_iadc.c"/>
           <file name="em_letimer.c" uri="studio:/sdk/platform/emlib/src/em_letimer.c"/>
           <file name="em_msc.c" uri="studio:/sdk/platform/emlib/src/em_msc.c"/>
+          <file name="em_se.c" uri="studio:/sdk/platform/emlib/src/em_se.c"/>
           <file name="em_system.c" uri="studio:/sdk/platform/emlib/src/em_system.c"/>
           <file name="em_timer.c" uri="studio:/sdk/platform/emlib/src/em_timer.c"/>
           <file name="em_usart.c" uri="studio:/sdk/platform/emlib/src/em_usart.c"/>
@@ -197,6 +199,104 @@
             <file name="sl_memory_region.h" uri="studio:/sdk/platform/common/toolchain/inc/sl_memory_region.h"/>
             <file name="sl_memory.h" uri="studio:/sdk/platform/common/toolchain/inc/sl_memory.h"/>
             <file name="sl_gcc_preinclude.h" uri="studio:/sdk/platform/common/toolchain/inc/sl_gcc_preinclude.h"/>
+          </folder>
+        </folder>
+      </folder>
+      <folder name="security">
+        <folder name="sl_component">
+          <folder name="sl_mbedtls_support">
+            <folder name="config">
+              <file name="sli_mbedtls_acceleration.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/config/sli_mbedtls_acceleration.h"/>
+              <file name="sli_mbedtls_omnipresent.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/config/sli_mbedtls_omnipresent.h"/>
+              <file name="sli_psa_acceleration.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/config/sli_psa_acceleration.h"/>
+            </folder>
+            <folder name="src">
+              <file name="sl_mbedtls.c" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/src/sl_mbedtls.c"/>
+              <file name="se_aes.c" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/src/se_aes.c"/>
+            </folder>
+            <folder name="inc">
+              <file name="sl_mbedtls.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/sl_mbedtls.h"/>
+              <file name="aes_alt.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/aes_alt.h"/>
+              <file name="ccm_alt.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/ccm_alt.h"/>
+              <file name="cmac_alt.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/cmac_alt.h"/>
+              <file name="se_management.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/se_management.h"/>
+              <file name="sha1_alt.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/sha1_alt.h"/>
+              <file name="sha256_alt.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/sha256_alt.h"/>
+              <file name="sha512_alt.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/sha512_alt.h"/>
+              <file name="gcm_alt.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/gcm_alt.h"/>
+              <file name="ecjpake_alt.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/ecjpake_alt.h"/>
+              <file name="sl_psa_values.h" uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc/sl_psa_values.h"/>
+            </folder>
+          </folder>
+          <folder name="sl_psa_driver">
+            <folder name="inc">
+              <file name="sli_psa_driver_features.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_psa_driver_features.h"/>
+              <file name="sli_psa_driver_common.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_psa_driver_common.h"/>
+              <file name="sli_se_version_dependencies.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_version_dependencies.h"/>
+              <file name="sli_se_driver_aead.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_driver_aead.h"/>
+              <file name="sli_se_driver_cipher.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_driver_cipher.h"/>
+              <file name="sli_se_driver_key_derivation.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_driver_key_derivation.h"/>
+              <file name="sli_se_driver_key_management.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_driver_key_management.h"/>
+              <file name="sli_se_driver_mac.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_driver_mac.h"/>
+              <file name="sli_se_opaque_functions.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_opaque_functions.h"/>
+              <file name="sli_se_opaque_types.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_opaque_types.h"/>
+              <file name="sli_se_transparent_functions.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_transparent_functions.h"/>
+              <file name="sli_se_transparent_types.h" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc/sli_se_transparent_types.h"/>
+            </folder>
+            <folder name="src">
+              <file name="sli_psa_driver_init.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_psa_driver_init.c"/>
+              <file name="sli_psa_driver_common.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_psa_driver_common.c"/>
+              <file name="sli_se_version_dependencies.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_version_dependencies.c"/>
+              <file name="sli_se_driver_builtin_keys.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_driver_builtin_keys.c"/>
+              <file name="sli_se_driver_key_management.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_driver_key_management.c"/>
+              <file name="sli_se_driver_key_derivation.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_driver_key_derivation.c"/>
+              <file name="sli_se_driver_aead.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_driver_aead.c"/>
+              <file name="sli_se_driver_mac.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_driver_mac.c"/>
+              <file name="sli_se_driver_signature.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_driver_signature.c"/>
+              <file name="sli_se_driver_cipher.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_driver_cipher.c"/>
+              <file name="sli_se_transparent_driver_cipher.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_transparent_driver_cipher.c"/>
+              <file name="sli_se_transparent_driver_hash.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_transparent_driver_hash.c"/>
+              <file name="sli_se_transparent_driver_aead.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_transparent_driver_aead.c"/>
+              <file name="sli_se_transparent_driver_mac.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_transparent_driver_mac.c"/>
+              <file name="sli_se_transparent_key_derivation.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_transparent_key_derivation.c"/>
+              <file name="sli_se_opaque_driver_mac.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_opaque_driver_mac.c"/>
+              <file name="sli_se_opaque_key_derivation.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_opaque_key_derivation.c"/>
+              <file name="sli_se_opaque_driver_cipher.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_opaque_driver_cipher.c"/>
+              <file name="sli_se_opaque_driver_aead.c" uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/src/sli_se_opaque_driver_aead.c"/>
+            </folder>
+          </folder>
+          <folder name="se_manager">
+            <folder name="src">
+              <file name="sl_se_manager.c" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sl_se_manager.c"/>
+              <file name="sl_se_manager_util.c" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sl_se_manager_util.c"/>
+              <file name="sl_se_manager_cipher.c" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sl_se_manager_cipher.c"/>
+              <file name="sl_se_manager_entropy.c" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sl_se_manager_entropy.c"/>
+              <file name="sl_se_manager_hash.c" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sl_se_manager_hash.c"/>
+              <file name="sl_se_manager_key_derivation.c" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sl_se_manager_key_derivation.c"/>
+              <file name="sl_se_manager_key_handling.c" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sl_se_manager_key_handling.c"/>
+              <file name="sl_se_manager_signature.c" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sl_se_manager_signature.c"/>
+              <file name="sl_se_manager_attestation.c" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sl_se_manager_attestation.c"/>
+              <file name="sli_se_manager_osal.h" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sli_se_manager_osal.h"/>
+              <file name="sli_se_manager_osal_baremetal.h" uri="studio:/sdk/platform/security/sl_component/se_manager/src/sli_se_manager_osal_baremetal.h"/>
+            </folder>
+            <folder name="inc">
+              <file name="sl_se_manager.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager.h"/>
+              <file name="sl_se_manager_defines.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_defines.h"/>
+              <file name="sl_se_manager_types.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_types.h"/>
+              <file name="sl_se_manager_util.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_util.h"/>
+              <file name="sli_se_manager_features.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sli_se_manager_features.h"/>
+              <file name="sl_se_manager_internal_keys.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_internal_keys.h"/>
+              <file name="sli_se_manager_internal.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sli_se_manager_internal.h"/>
+              <file name="sl_se_manager_check_config.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_check_config.h"/>
+              <file name="sl_se_manager_config.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_config.h"/>
+              <file name="sl_se_manager_cipher.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_cipher.h"/>
+              <file name="sl_se_manager_entropy.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_entropy.h"/>
+              <file name="sl_se_manager_hash.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_hash.h"/>
+              <file name="sl_se_manager_key_derivation.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_key_derivation.h"/>
+              <file name="sl_se_manager_key_handling.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_key_handling.h"/>
+              <file name="sl_se_manager_signature.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_signature.h"/>
+              <file name="sl_se_manager_attestation.h" uri="studio:/sdk/platform/security/sl_component/se_manager/inc/sl_se_manager_attestation.h"/>
+            </folder>
           </folder>
         </folder>
       </folder>
@@ -235,6 +335,136 @@
         </folder>
       </folder>
     </folder>
+    <folder name="util">
+      <folder name="third_party">
+        <folder name="mbedtls">
+          <folder name="library">
+            <file name="aes.c" uri="studio:/sdk/util/third_party/mbedtls/library/aes.c"/>
+            <file name="constant_time.c" uri="studio:/sdk/util/third_party/mbedtls/library/constant_time.c"/>
+            <file name="threading.c" uri="studio:/sdk/util/third_party/mbedtls/library/threading.c"/>
+            <file name="platform.c" uri="studio:/sdk/util/third_party/mbedtls/library/platform.c"/>
+            <file name="platform_util.c" uri="studio:/sdk/util/third_party/mbedtls/library/platform_util.c"/>
+            <file name="bn_mul.h" uri="studio:/sdk/util/third_party/mbedtls/library/bn_mul.h"/>
+            <file name="bignum_internal.h" uri="studio:/sdk/util/third_party/mbedtls/library/bignum_internal.h"/>
+            <file name="cipher_wrap.h" uri="studio:/sdk/util/third_party/mbedtls/library/cipher_wrap.h"/>
+            <file name="common.h" uri="studio:/sdk/util/third_party/mbedtls/library/common.h"/>
+            <file name="constant_time_internal.h" uri="studio:/sdk/util/third_party/mbedtls/library/constant_time_internal.h"/>
+            <file name="constant_time_invasive.h" uri="studio:/sdk/util/third_party/mbedtls/library/constant_time_invasive.h"/>
+            <file name="ecp_internal_alt.h" uri="studio:/sdk/util/third_party/mbedtls/library/ecp_internal_alt.h"/>
+            <file name="ecp_invasive.h" uri="studio:/sdk/util/third_party/mbedtls/library/ecp_invasive.h"/>
+            <file name="entropy_poll.h" uri="studio:/sdk/util/third_party/mbedtls/library/entropy_poll.h"/>
+            <file name="md_wrap.h" uri="studio:/sdk/util/third_party/mbedtls/library/md_wrap.h"/>
+            <file name="mps_common.h" uri="studio:/sdk/util/third_party/mbedtls/library/mps_common.h"/>
+            <file name="mps_error.h" uri="studio:/sdk/util/third_party/mbedtls/library/mps_error.h"/>
+            <file name="mps_reader.h" uri="studio:/sdk/util/third_party/mbedtls/library/mps_reader.h"/>
+            <file name="mps_trace.h" uri="studio:/sdk/util/third_party/mbedtls/library/mps_trace.h"/>
+            <file name="padlock.h" uri="studio:/sdk/util/third_party/mbedtls/library/padlock.h"/>
+            <file name="pk_wrap.h" uri="studio:/sdk/util/third_party/mbedtls/library/pk_wrap.h"/>
+            <file name="pkwrite.h" uri="studio:/sdk/util/third_party/mbedtls/library/pkwrite.h"/>
+            <file name="rsa_alt_helpers.h" uri="studio:/sdk/util/third_party/mbedtls/library/rsa_alt_helpers.h"/>
+            <file name="ssl_debug_helpers.h" uri="studio:/sdk/util/third_party/mbedtls/library/ssl_debug_helpers.h"/>
+            <file name="ssl_client.h" uri="studio:/sdk/util/third_party/mbedtls/library/ssl_client.h"/>
+            <file name="ssl_misc.h" uri="studio:/sdk/util/third_party/mbedtls/library/ssl_misc.h"/>
+            <file name="ssl_tls13_invasive.h" uri="studio:/sdk/util/third_party/mbedtls/library/ssl_tls13_invasive.h"/>
+            <file name="ssl_tls13_keys.h" uri="studio:/sdk/util/third_party/mbedtls/library/ssl_tls13_keys.h"/>
+            <file name="psa_crypto_client.c" uri="studio:/sdk/util/third_party/mbedtls/library/psa_crypto_client.c"/>
+          </folder>
+          <folder name="include">
+            <folder name="mbedtls">
+              <file name="aes.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/aes.h"/>
+              <file name="aria.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/aria.h"/>
+              <file name="asn1.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/asn1.h"/>
+              <file name="asn1write.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/asn1write.h"/>
+              <file name="base64.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/base64.h"/>
+              <file name="bignum.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/bignum.h"/>
+              <file name="build_info.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/build_info.h"/>
+              <file name="camellia.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/camellia.h"/>
+              <file name="ccm.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ccm.h"/>
+              <file name="chacha20.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/chacha20.h"/>
+              <file name="chachapoly.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/chachapoly.h"/>
+              <file name="check_config.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/check_config.h"/>
+              <file name="cipher.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/cipher.h"/>
+              <file name="cmac.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/cmac.h"/>
+              <file name="compat-2.x.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/compat-2.x.h"/>
+              <file name="config_psa.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/config_psa.h"/>
+              <file name="constant_time.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/constant_time.h"/>
+              <file name="ctr_drbg.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ctr_drbg.h"/>
+              <file name="debug.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/debug.h"/>
+              <file name="des.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/des.h"/>
+              <file name="dhm.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/dhm.h"/>
+              <file name="ecdh.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ecdh.h"/>
+              <file name="ecdsa.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ecdsa.h"/>
+              <file name="ecjpake.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ecjpake.h"/>
+              <file name="ecp.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ecp.h"/>
+              <file name="entropy.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/entropy.h"/>
+              <file name="error.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/error.h"/>
+              <file name="gcm.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/gcm.h"/>
+              <file name="hkdf.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/hkdf.h"/>
+              <file name="hmac_drbg.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/hmac_drbg.h"/>
+              <file name="mbedtls_config.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/mbedtls_config.h"/>
+              <file name="md.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/md.h"/>
+              <file name="md5.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/md5.h"/>
+              <file name="memory_buffer_alloc.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/memory_buffer_alloc.h"/>
+              <file name="net_sockets.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/net_sockets.h"/>
+              <file name="nist_kw.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/nist_kw.h"/>
+              <file name="oid.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/oid.h"/>
+              <file name="pem.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/pem.h"/>
+              <file name="pk.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/pk.h"/>
+              <file name="pkcs12.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/pkcs12.h"/>
+              <file name="pkcs5.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/pkcs5.h"/>
+              <file name="platform.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/platform.h"/>
+              <file name="platform_time.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/platform_time.h"/>
+              <file name="platform_util.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/platform_util.h"/>
+              <file name="poly1305.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/poly1305.h"/>
+              <file name="private_access.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/private_access.h"/>
+              <file name="psa_util.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/psa_util.h"/>
+              <file name="ripemd160.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ripemd160.h"/>
+              <file name="rsa.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/rsa.h"/>
+              <file name="sha1.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/sha1.h"/>
+              <file name="sha256.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/sha256.h"/>
+              <file name="sha512.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/sha512.h"/>
+              <file name="ssl.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ssl.h"/>
+              <file name="ssl_cache.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ssl_cache.h"/>
+              <file name="ssl_ciphersuites.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ssl_ciphersuites.h"/>
+              <file name="ssl_cookie.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ssl_cookie.h"/>
+              <file name="ssl_ticket.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/ssl_ticket.h"/>
+              <file name="threading.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/threading.h"/>
+              <file name="timing.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/timing.h"/>
+              <file name="version.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/version.h"/>
+              <file name="x509.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/x509.h"/>
+              <file name="x509_crl.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/x509_crl.h"/>
+              <file name="x509_crt.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/x509_crt.h"/>
+              <file name="x509_csr.h" uri="studio:/sdk/util/third_party/mbedtls/include/mbedtls/x509_csr.h"/>
+            </folder>
+            <folder name="psa">
+              <file name="crypto.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto.h"/>
+              <file name="crypto_builtin_composites.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_builtin_composites.h"/>
+              <file name="crypto_builtin_primitives.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_builtin_primitives.h"/>
+              <file name="crypto_compat.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_compat.h"/>
+              <file name="crypto_config.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_config.h"/>
+              <file name="crypto_driver_common.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_driver_common.h"/>
+              <file name="crypto_driver_contexts_composites.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_driver_contexts_composites.h"/>
+              <file name="crypto_driver_contexts_primitives.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_driver_contexts_primitives.h"/>
+              <file name="crypto_extra.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_extra.h"/>
+              <file name="crypto_platform.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_platform.h"/>
+              <file name="crypto_se_driver.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_se_driver.h"/>
+              <file name="crypto_sizes.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_sizes.h"/>
+              <file name="crypto_struct.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_struct.h"/>
+              <file name="crypto_types.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_types.h"/>
+              <file name="crypto_values.h" uri="studio:/sdk/util/third_party/mbedtls/include/psa/crypto_values.h"/>
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder name="silicon_labs">
+        <folder name="silabs_core">
+          <folder name="memory_manager">
+            <file name="sl_malloc.c" uri="studio:/sdk/util/silicon_labs/silabs_core/memory_manager/sl_malloc.c"/>
+            <file name="sl_malloc.h" uri="studio:/sdk/util/silicon_labs/silabs_core/memory_manager/sl_malloc.h"/>
+          </folder>
+        </folder>
+      </folder>
+    </folder>
   </folder>
   <file name="app.c" linked="false" uri="studio:/project/app.c"/>
   <file name="main.c" linked="false" uri="studio:/project/main.c"/>
@@ -249,7 +479,16 @@
   <includePath uri="studio:/sdk/platform/emdrv/common/inc"/>
   <includePath uri="studio:/sdk/platform/emlib/inc"/>
   <includePath uri="studio:/sdk/platform/common/inc"/>
+  <includePath uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/config"/>
+  <includePath uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/config/preset"/>
+  <includePath uri="studio:/sdk/platform/security/sl_component/sl_mbedtls_support/inc"/>
+  <includePath uri="studio:/sdk/util/third_party/mbedtls/include"/>
+  <includePath uri="studio:/sdk/util/third_party/mbedtls/library"/>
   <includePath uri="studio:/sdk/hardware/driver/mx25_flash_shutdown/inc/sl_mx25_flash_shutdown_usart"/>
+  <includePath uri="studio:/sdk/platform/security/sl_component/sl_psa_driver/inc"/>
+  <includePath uri="studio:/sdk/platform/security/sl_component/se_manager/inc"/>
+  <includePath uri="studio:/sdk/platform/security/sl_component/se_manager/src"/>
+  <includePath uri="studio:/sdk/util/silicon_labs/silabs_core/memory_manager"/>
   <includePath uri="studio:/sdk/platform/common/toolchain/inc"/>
   <includePath uri="studio:/sdk/platform/service/system/inc"/>
   <includePath uri="studio:/sdk/platform/service/udelay/inc"/>
@@ -262,6 +501,9 @@
   <macroDefinition name="SL_BOARD_NAME" value="&quot;BRD4186C&quot;"/>
   <macroDefinition name="SL_BOARD_REV" value="&quot;A01&quot;"/>
   <macroDefinition name="SL_COMPONENT_CATALOG_PRESENT"/>
+  <macroDefinition name="MBEDTLS_CONFIG_FILE" value="&lt;sl_mbedtls_config.h>"/>
+  <macroDefinition name="MBEDTLS_PSA_CRYPTO_CLIENT"/>
+  <macroDefinition name="MBEDTLS_PSA_CRYPTO_CONFIG_FILE" value="&lt;psa_crypto_config.h>"/>
   <libraryFile name="gcc"/>
   <libraryFile name="c"/>
   <libraryFile name="m"/>

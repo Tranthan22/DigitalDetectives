@@ -7,7 +7,7 @@
 
 #include "uart.h"
 
-char response[10];
+unsigned char response[10];
 
 void uartInit(void){
 
@@ -45,6 +45,7 @@ void EUSART0_RX_IRQHandler(void)
       j++;
   }
   else {
+      /*Handling the response data when sending sensor data to the station*/
       if (j == 1){
           if (response[0] == '1'){
               EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
@@ -56,8 +57,9 @@ void EUSART0_RX_IRQHandler(void)
           j = 0;
           interrupt = 0;
       }
+      /*Handling the response data when sending connection data to the station*/
       else if (j==4 && response[0] == '1' && response[1] == '1'){
-          /* Station phản hổi được ghép kèm theo địa chỉ Station */
+              /*The case where the station agrees to establish a connection*/
               letimer0Disable(); /* Dừng Timer xử lý sự kiện kết nối */
               dataTransmit[0] = response[2]; dataTransmit[1] = response[3];
               GPIO_PinOutToggle(LED0_PORT, LED0_PIN); /* Bật LED0 (3s): Thông báo kết nối thành công */
@@ -67,8 +69,9 @@ void EUSART0_RX_IRQHandler(void)
               USTIMER_DeInit();
               interrupt = 0;
       }
+
       else if(j==2 && response[0] == '1' && response[1] == '0'){
-          /* Station phản hổi không được ghép */
+          /*The case where the station does not agree to establish a connection*/
               letimer0Disable();/* Dừng Timer xử lý sự kiện kết nối */
               GPIO_PinOutToggle(LED1_PORT, LED1_PIN); /* Bật LED1 (3s): Thông báo kết nối không thành công */
               USTIMER_Init();
@@ -85,7 +88,7 @@ void EUSART0_RX_IRQHandler(void)
 
 }
 
-void transmitData(char* dataArray, uint8_t length)
+void transmitData(unsigned char* dataArray, uint8_t length)
 {
   for (uint8_t i = 0; i < length; i++)
   {
@@ -94,11 +97,11 @@ void transmitData(char* dataArray, uint8_t length)
 }
 
 
-void uint16ToCharArray(uint16_t number, char* array, int arraySize) {
-    snprintf(array, arraySize, "%03u", number);
+void uint16ToUnsignedCharArray(uint16_t number, unsigned char* array, int arraySize) {
+    snprintf((char*)array, arraySize, "%03u", number);
 }
 
-uint8_t calculateLrc(const char* array, int size) {
+uint8_t calculateLrc(const unsigned char* array, int size) {
     uint8_t lrc = 0;
     for (int i = 0; i < size; i++) {
         lrc ^= array[i];

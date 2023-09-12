@@ -45,26 +45,27 @@ void GPIO_ODD_IRQHandler(void)
   uint32_t interruptMask = GPIO_IntGet();
   GPIO_IntClear(interruptMask);
 
-  /*Check if button 0 was pressed --> Connect to Station*/
+  /*Check Button 0, if Button 0 is pressed, proceed with connecting to the station*/
   if (interruptMask & (1 << BUTTON0_PIN))
   {
+
     LETIMER_Reset(LETIMER0);
     letimer0Init();
     if(work==1) {
         work = 0;
         GPIO_PinOutClear(LED1_PORT, LED1_PIN);
     }
-    char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
+    unsigned char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
     transmitData(dataToConnect, sizeof(dataToConnect));
-    EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
-    letimer0Enable(); /*Bật Timer xử lý sự kiện kết nối*/
+    EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL); /*Enable EUSART0 interrupt to receive connection data from the station*/
+    letimer0Enable(); /*Enable the timer to handle the connection event*/
 
   }
 
-  /*Check if button 1 was pressed --> Start/Stop*/
+  /*Check Button 1, if Button 1 is pressed, proceed to start or stop the operation*/
   else if (interruptMask & (1 << BUTTON1_PIN))
   {
-      if(work==0){
+      if(work == 0){
           letimer0Enable();
           work = 1;
           GPIO_PinOutSet(LED1_PORT, LED1_PIN);
