@@ -74,6 +74,7 @@ void EUSART0_RX_IRQHandler(void)
               USTIMER_Init();
               USTIMER_DelayIntSafe(3000000);
               USTIMER_DeInit();
+              GPIO_PinOutToggle(LED1_PORT, LED1_PIN);
               interrupt = 0;
       }
 

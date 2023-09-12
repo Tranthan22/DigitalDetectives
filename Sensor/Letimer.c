@@ -7,7 +7,7 @@
 
 #include "Letimer.h"
 
-#define Time_underflow   5  /* 5s */
+#define Time_underflow   10  /* 10s */
 char dataTransmit[21];
 uint8_t interrupt = 0;
 uint16_t battery = 100;
@@ -62,16 +62,20 @@ void LETIMER0_IRQHandler(void) {
         char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
         transmitData(dataToConnect, sizeof(dataToConnect));
         EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
+
     }
     else if(work==0 && interrupt==4){
+        EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
         GPIO_PinOutToggle(LED1_PORT, LED1_PIN); /* Bật LED1 (3s): Thông báo kết nối không thành công */
         USTIMER_Init();
         USTIMER_DelayIntSafe(3000000);
         USTIMER_DeInit();
+        GPIO_PinOutToggle(LED1_PORT, LED1_PIN);
         interrupt = 0;
         letimer0Disable();
+
     }
-    else if (work==1 && interrupt == 4) { /* Every 20 seconds */
+    else if (work==1 && interrupt == 3) { /* Every 30 seconds */
         uint16_t Moisture = getMoisture();
 
         DHT_DataTypedef DHT_data;
@@ -94,7 +98,7 @@ void LETIMER0_IRQHandler(void) {
         EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
     }
 
-    else if (work==1 && interrupt == 6) {
+    else if (work==1 && interrupt == 4) {
         transmitData(dataTransmit, sizeof(dataTransmit));
         EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
         interrupt = 0;

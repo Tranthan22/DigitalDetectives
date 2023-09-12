@@ -48,9 +48,11 @@ void GPIO_ODD_IRQHandler(void)
   /*Check if button 0 was pressed --> Connect to Station*/
   if (interruptMask & (1 << BUTTON0_PIN))
   {
+    LETIMER_Reset(LETIMER0);
+    letimer0Init();
     if(work==1) {
-        letimer0Disable();
         work = 0;
+        GPIO_PinOutClear(LED1_PORT, LED1_PIN);
     }
     char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
     transmitData(dataToConnect, sizeof(dataToConnect));
