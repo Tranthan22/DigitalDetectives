@@ -63,7 +63,6 @@ void LETIMER0_IRQHandler(void) {
         unsigned char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
         transmitData(dataToConnect, sizeof(dataToConnect));
         EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
-
     }
 
     else if(work==0 && interrupt==4){
@@ -77,7 +76,7 @@ void LETIMER0_IRQHandler(void) {
         letimer0Disable();
     }
 
-    else if (work==1 && interrupt == 3) { /* Every 30 seconds */
+    else if (work==1 && interrupt == 180) { /* Every 30 minutes */
 
         uint16_t Moisture = getMoisture(); /*Get Moisture data*/
 
@@ -107,11 +106,10 @@ void LETIMER0_IRQHandler(void) {
 
         /* Transmit data to station */
         transmitData(dataTransmit, sizeof(dataTransmit));
-
         EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
     }
 
-    else if (work==1 && interrupt == 4) {
+    else if (work==1 && interrupt == 181) {
         transmitData(dataTransmit, sizeof(dataTransmit)); /*Retransmit data when no response is received from the station*/
         EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
         interrupt = 0;
