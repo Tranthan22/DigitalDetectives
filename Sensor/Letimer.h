@@ -21,7 +21,7 @@ void letimer0Disable(void);
 void LETIMER0_IRQHandler(void);
 void batteryLevel(uint8_t* count, uint16_t* battery);
 
-extern unsigned char dataTransmit[21]; /*Array holding transmitted data*/
+extern unsigned char dataTransmit[23]; /*Array holding transmitted data*/
 extern uint8_t interrupt; /*Counter variable for Letimer interrupts*/
 
 #endif /* LETIMER_H_ */

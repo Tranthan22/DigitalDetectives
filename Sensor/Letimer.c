@@ -8,7 +8,7 @@
 #include "Letimer.h"
 
 #define Time_underflow   10  /*The Letimer interrupts every 10 seconds*/
-unsigned char dataTransmit[21];
+unsigned char dataTransmit[23];
 uint8_t interrupt = 0;
 uint16_t battery = 100;
 uint8_t count = 0;
@@ -95,6 +95,7 @@ void LETIMER0_IRQHandler(void) {
         uint16ToUnsignedCharArray(batLevel, &dataTransmit[13], 4);
         dataTransmit[16] = '2'; dataTransmit[17] = '5';
         dataTransmit[18] = '9'; dataTransmit[20] = 'E';
+        dataTransmit[21] = 'E'; dataTransmit[22] = 'E';
         dataTransmit[19] = calculateLrc(&dataTransmit[3], 16);
 
         /* Encrypt */
