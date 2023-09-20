@@ -9,12 +9,15 @@
 #include "connect.h"
 
 uint8_t work = 0;
+uint8_t connect;
 
 void gpioSetup(void){
 
   CMU_ClockEnable(cmuClock_GPIO, true);
   GPIO_PinModeSet(LED0_PORT, LED0_PIN, gpioModePushPull, 0);
   GPIO_PinModeSet(LED1_PORT, LED1_PIN, gpioModePushPull, 0);
+  GPIO_PinModeSet(LoraPort, LoraPin, gpioModePushPull, 0);
+  GPIO_PinModeSet(MoisturePort, MoisturePin, gpioModePushPull, 0);
 
   /*Configure Button PB0 as input and enable interrupt*/
   GPIO_PinModeSet(BUTTON0_PORT, BUTTON0_PIN, gpioModeInputPull, 1);
@@ -48,7 +51,7 @@ void GPIO_ODD_IRQHandler(void)
   /*Check Button 0, if Button 0 is pressed, proceed with connecting to the station*/
   if (interruptMask & (1 << BUTTON0_PIN))
   {
-
+    connect = 0;
     LETIMER_Reset(LETIMER0);
     letimer0Init();
     if(work==1) {
@@ -65,12 +68,12 @@ void GPIO_ODD_IRQHandler(void)
   /*Check Button 1, if Button 1 is pressed, proceed to start or stop the operation*/
   else if (interruptMask & (1 << BUTTON1_PIN))
   {
-      if(work == 0){
+      if(work == 0 && connect == 1){
           letimer0Enable();
           work = 1;
           GPIO_PinOutSet(LED1_PORT, LED1_PIN);
       }
-      else {
+      else if(work == 1 && connect == 1){
           letimer0Disable();
           work = 0;
           GPIO_PinOutClear(LED1_PORT, LED1_PIN);

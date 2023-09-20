@@ -14,6 +14,8 @@
 #define RX_PIN              4
 #define VCOM_Enable_PORT    gpioPortB
 #define VCOM_Enable_PIN     0
+#define LoraPort   gpioPortC
+#define LoraPin    6
 
 #include "em_eusart.h"
 #include "Letimer.h"

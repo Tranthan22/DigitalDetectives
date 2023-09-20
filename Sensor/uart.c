@@ -8,6 +8,7 @@
 #include "uart.h"
 
 unsigned char response[10];
+extern uint8_t connect;
 
 void uartInit(void){
 
@@ -68,6 +69,7 @@ void EUSART0_RX_IRQHandler(void)
               GPIO_PinOutToggle(LED0_PORT, LED0_PIN);
               USTIMER_DeInit();
               interrupt = 0;
+              connect = 1;
       }
 
       else if(j==2 && response[0] == '1' && response[1] == '0'){
@@ -90,10 +92,12 @@ void EUSART0_RX_IRQHandler(void)
 
 void transmitData(unsigned char* dataArray, uint8_t length)
 {
+  GPIO_PinOutSet(LoraPort, LoraPin);
   for (uint8_t i = 0; i < length; i++)
   {
       EUSART_Tx(EUSART0, dataArray[i]);
   }
+  GPIO_PinOutClear(LoraPort, LoraPin);
 }
 
 

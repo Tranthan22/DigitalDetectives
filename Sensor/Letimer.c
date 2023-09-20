@@ -58,14 +58,14 @@ void LETIMER0_IRQHandler(void) {
     LETIMER_IntClear(LETIMER0, flags);
     interrupt++;
 
-    if(work==0 && interrupt<=3){
+    if(work==0 && interrupt<=2){
         EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
-        unsigned char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};
+        unsigned char dataToConnect[] = {0xFF, 0xFF, 0x17, '1', 0x01, 0x03, 'E'};;
         transmitData(dataToConnect, sizeof(dataToConnect));
         EUSART_IntEnable(EUSART0, EUSART_IEN_RXFL);
     }
 
-    else if(work==0 && interrupt==4){
+    else if(work==0 && interrupt==3){
         EUSART_IntDisable(EUSART0, EUSART_IEN_RXFL);
         GPIO_PinOutToggle(LED1_PORT, LED1_PIN); /*Turn on LED-1(3s)to inform the user that the connection was unsuccessful*/
         USTIMER_Init();
@@ -75,11 +75,13 @@ void LETIMER0_IRQHandler(void) {
         interrupt = 0;
         letimer0Disable();
     }
-
+    else if (work==1 && interrupt == 179){
+        GPIO_PinOutSet(LoraPort, LoraPin);
+    }
     else if (work==1 && interrupt == 180) { /* Every 30 minutes */
 
         uint16_t Moisture = getMoisture(); /*Get Moisture data*/
-
+        GPIO_PinOutClear(LoraPort, LoraPin);
         DHT_DataTypedef DHT_data; /*Get Temperature and Humidity data*/
         DHT_GetData(&DHT_data);
 
