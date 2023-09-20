@@ -28,4 +28,6 @@ void iostream_usart_init_sleep(void);
  ******************************************************************************/
 void sleeptimer_app_process_action(void);
 void gpio_set(void);
+void getData(void);
+void getAES_data(void);
 #endif  // SLEEPTIMER_APP_H
