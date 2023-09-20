@@ -15,23 +15,41 @@
  *
  ******************************************************************************/
 #include "sleeptimer_app.h"
-
+#include "connect.h"
+#include"em_gpio.h"
+#include "sl_simple_led_instances.h"
+#include "sl_simple_button_instances.h"
+#include "sl_iostream_init_instances.h"
+#include"crypt.h"
+//#include"crypt.h"
+#ifndef BUTTON_INSTANCE_1
+#define BUTTON_INSTANCE_1   sl_button_btn1
+#endif
 /***************************************************************************//**
  * Initialize application.
  ******************************************************************************/
 void app_init(void)
 {
-  //;
   gpio_set();
-  //iostream_usart_init();
- iostream_usart_init_sleep();
-}
+
+ GPIO_PinModeSet (gpioPortB,0,gpioModePushPull,0);
+ sl_sleeptimer_delay_millisecond(500);
+       /* Nhấn BUTTON_0 để kết nối tới Station */
+     while(1){
+         int a=GPIO_PinInGet(gpioPortB, 00);
+             if (a) {
+          connectToStation();
+             }
+      }
+
+
+  //iostream_usart_init_sleep();
+   }
+
 
 /***************************************************************************//**
  * App ticking function.
  ******************************************************************************/
 void app_process_action(void)
 {
- // sleeptimer_app_process_action();
-  //iostream_usart_init_sleep();
 }
