@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include<stdint.h>
 #include "sleeptimer_app.h"
 #include "sl_sleeptimer.h"
 #include "sl_simple_led_instances.h"
@@ -27,22 +28,25 @@
 #include"sl_iostream_init_instances.h"
 #include"sl_iostream_handles.h"
 #include"em_gpio.h"
+#include"connect.h"
+#include"crypt.h"
 #ifndef BUFSIZE
-#define BUFSIZE    80
+#define BUFSIZE    10
 #endif
 int result;
-static char buffer[BUFSIZE];
+extern char address[5];
+extern void deleteString();
+//static char buffer[BUFSIZE];
 /*******************************************************************************
  *******************************   DEFINES   ***********************************
  ******************************************************************************/
+#ifndef BUTTON_INSTANCE_0
+#define BUTTON_INSTANCE_0   sl_button_btn0
+#endif
 
-//#ifndef BUTTON_INSTANCE_0
-//#define BUTTON_INSTANCE_0   sl_button_btn0
-//#endif
-
-//#ifndef BUTTON_INSTANCE_1
-//#define BUTTON_INSTANCE_1   sl_button_btn1
-//#endif
+#ifndef BUTTON_INSTANCE_1
+#define BUTTON_INSTANCE_1   sl_button_btn1
+#endif
 
 #ifndef LED_INSTANCE_0
 #define LED_INSTANCE_0      sl_led_led0
@@ -56,10 +60,17 @@ static char buffer[BUFSIZE];
 #ifndef BUFSIZE
 #define BUFSIZE    80
 #endif
+#define TOGGLE_INT(value) ((value) == 0 ? 1 : 0)
 int result;
-static char buffer[BUFSIZE];
+//static char buffer[BUFSIZE];
 char *manual;
 char *autom;
+static char input_string[21];
+static char nhan_ve[17]={'2','0','0','0','2','5','8','0','0','0','0','0','0','0','0','0','0'};
+ char transmit1[21]={'2','0','0','0','2','5','8','0','0','0','0','0','0','0','0','0','0','E','E','E','\0'};
+//static char transmit2[20]={'2','0','0','0','2','5','8','0','0','0','0','0','0','0','0','0','0','E','E','E'};
+int dem;
+
 
 /*******************************************************************************
  ***************************  LOCAL VARIABLES   ********************************
@@ -68,12 +79,14 @@ char *autom;
 static sl_sleeptimer_timer_handle_t periodic_timer;
 static sl_sleeptimer_timer_handle_t one_shot_timer;
 static sl_sleeptimer_timer_handle_t status_timer;
-static bool print_status = false;
 
 /*******************************************************************************
  ************************   LOCAL FUNCTIONS ************************************
  ******************************************************************************/
 //char* ascii_transmit(const char* data_sensor);
+int *mo1,*mo2,*mo3;
+char *check;
+
 
 // Periodic timer callback
 static void on_periodic_timeout(sl_sleeptimer_timer_handle_t *handle,
@@ -81,13 +94,37 @@ static void on_periodic_timeout(sl_sleeptimer_timer_handle_t *handle,
 {
   (void)&handle;
   (void)&data;
-  sl_led_turn_off(&LED_INSTANCE_0);
-  //printf("den led 0 tat");
-  sl_sleeptimer_restart_periodic_timer_ms(&periodic_timer,
-                                                   5000,
-                                                    on_periodic_timeout, NULL,
-                                                    0,
-                                                   SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+  if(*check=='1'){
+      sl_led_turn_on(&LED_INSTANCE_0);
+       //*mo1 = TOGGLE_INT(*mo1);
+      *mo1=0;
+}
+  else{
+      GPIO_PinModeSet (gpioPortC,0,gpioModePushPull,1);
+      GPIO_PinModeSet (gpioPortC,8,gpioModePushPull,1);
+      GPIO_PinModeSet (gpioPortA,0,gpioModePushPull,1);
+      *mo2=0;
+      *mo1=0;
+      *mo3=0;
+     // printf("%c%c%c%c",address[0],address[1],address[2],address[3]);
+    char Mo2 = *mo2+'0';
+    char Mo1 = *mo1+'0';
+    char Mo3 = *mo3+'0';
+    char transmit2[21]={'2','0','0','0','2','5','8','0','0','0','0','0','0','0','0','0','0','E','E','E','\0'};
+    transmit2[1]=Mo1;
+    transmit2[2]=Mo2;
+    transmit2[3]=Mo3;
+    //printf("%c%c%c",address[0],address[1],address[2]);
+   // printf("%s",transmit2);
+    unsigned char dataTo_Encrypt[16];
+    unsigned char decrypted_Data[16];
+            memcpy(dataTo_Encrypt, &transmit2[1], 16);
+              EncryptDataECB(dataTo_Encrypt, decrypted_Data);
+               memcpy(&transmit2[1], decrypted_Data, 16);
+       //        printf("%c%c%c%c",address[0],address[1],address[2],address[3]);
+  //  printf("%s\n",transmit2);
+  }
+sl_sleeptimer_stop_timer(&periodic_timer);
 }
 
 // One-shot timer callback
@@ -96,25 +133,89 @@ static void on_one_shot_timeout(sl_sleeptimer_timer_handle_t *handle,
 {
   (void)&handle;
   (void)&data;
-  sl_led_turn_off(&LED_INSTANCE_1);
-  //printf("den led 1 tat");
-    sl_sleeptimer_restart_periodic_timer_ms(&one_shot_timer,
-                                                     5000,
-                                                      on_one_shot_timeout, NULL,
-                                                      0,
-                                                     SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+  if(*check=='1'){
+  sl_led_turn_on(&LED_INSTANCE_1);
+ // *mo2 = TOGGLE_INT(*mo2);
+  *mo2=0;
+}
+  else{
+      GPIO_PinModeSet (gpioPortC,0,gpioModePushPull,1);
+      GPIO_PinModeSet (gpioPortC,8,gpioModePushPull,1);
+      GPIO_PinModeSet (gpioPortA,0,gpioModePushPull,1);
+      *mo2=0;
+      *mo1=0;
+      *mo3=0;
+     // printf("%c%c%c%c",address[0],address[1],address[2],address[3]);
+    char Mo2 = *mo2+'0';
+    char Mo1 = *mo1+'0';
+    char Mo3 = *mo3+'0';
+    char transmit2[21]={'2','0','0','0','2','5','8','0','0','0','0','0','0','0','0','0','0','E','E','E','\0'};
+    transmit2[1]=Mo1;
+    transmit2[2]=Mo2;
+    transmit2[3]=Mo3;
+  //  printf("%s\n",transmit2);
+    unsigned char dataTo_Encrypt[16];
+    unsigned char decrypted_Data[16];
+            memcpy(dataTo_Encrypt, &transmit2[1], 16);
+              EncryptDataECB(dataTo_Encrypt, decrypted_Data);
+               memcpy(&transmit2[1], decrypted_Data, 16);
+          //     printf("%c%c%c%c",address[0],address[1],address[2],address[3]);
+  //  printf("%s\n",transmit2);
+  }
   }
 
-
-// Status timer callback
 static void on_status_timeout(sl_sleeptimer_timer_handle_t *handle,
                               void *data)
 {
   (void)&handle;
   (void)&data;
-  print_status = true;
-}
+  sl_sleeptimer_stop_timer(&status_timer);
+  if(*check=='1'){
+      GPIO_PinModeSet (gpioPortA,0,gpioModePushPull,1);
 
+      *mo3=0;
+char Mo2 = *mo2+'0';
+char Mo1 = *mo1+'0';
+char Mo3 = *mo3+'0';
+char transmit2[21]={'2','0','0','0','2','5','8','0','0','0','0','0','0','0','0','0','0','E','E','E','\0'};
+transmit2[1]=Mo1;
+transmit2[2]=Mo2;
+transmit2[3]=Mo3;
+
+unsigned char dataTo_Encrypt[16];
+unsigned char decrypted_Data[16];
+        memcpy(dataTo_Encrypt, &transmit2[1], 16);
+          EncryptDataECB(dataTo_Encrypt, decrypted_Data);
+           memcpy(&transmit2[1], decrypted_Data, 16);
+           printf("%c%c%c",address[0],address[1],address[2]);
+printf("%s",transmit2);
+  }
+  else{
+      GPIO_PinModeSet (gpioPortC,0,gpioModePushPull,1);
+      GPIO_PinModeSet (gpioPortC,8,gpioModePushPull,1);
+      GPIO_PinModeSet (gpioPortA,0,gpioModePushPull,1);
+      *mo2=0;
+      *mo1=0;
+      *mo3=0;
+      //printf("%c%c%c%c",address[0],address[1],address[2],address[3]);
+    char Mo2 = *mo2+'0';
+    char Mo1 = *mo1+'0';
+    char Mo3 = *mo3+'0';
+    char transmit2[21]={'2','0','0','0','2','5','8','0','0','0','0','0','0','0','0','0','0','E','E','E','\0'};
+    transmit2[1]=Mo1;
+    transmit2[2]=Mo2;
+    transmit2[3]=Mo3;
+
+    unsigned char dataTo_Encrypt[16];
+    unsigned char decrypted_Data[16];
+            memcpy(dataTo_Encrypt, &transmit2[1], 16);
+              EncryptDataECB(dataTo_Encrypt, decrypted_Data);
+               memcpy(&transmit2[1], decrypted_Data, 16);
+               printf("%c%c%c",address[0],address[1],address[2]);
+    printf("%s",transmit2);
+  }
+
+}
 /*******************************************************************************
  **************************   GLOBAL FUNCTIONS   *******************************
  ******************************************************************************/
@@ -124,14 +225,7 @@ static void on_status_timeout(sl_sleeptimer_timer_handle_t *handle,
  ******************************************************************************/
 void sleeptimer_app_init(void)
 {
-  /* Output on vcom usart instance */
-  //printf("Sleeptimer example\r\n\r\n");
 
- // printf("m1101\r\n");
- // printf("LED1 is controlled by a one-shot timer\r\n");
-  //printf("Use buttons to start and restart timers\r\n");
-
-  // Create timer for waking up the system periodically.
   sl_sleeptimer_start_periodic_timer_ms(&periodic_timer,
                                         TIMEOUT_MS,
                                         on_periodic_timeout, NULL,
@@ -147,278 +241,241 @@ void sleeptimer_app_init(void)
 
   // Create periodic timer to report status of other timers
   sl_sleeptimer_start_periodic_timer_ms(&status_timer,
-                                        1000,
+                                        TIMEOUT_MS,
                                         on_status_timeout, NULL,
                                         0,
                                         SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
 }
-
-/***************************************************************************//**
- * Ticking function.
- ******************************************************************************/
-void sleeptimer_app_process_action(void)
-{
-  uint32_t remaining;
-
-  // Periodically report the status of the other timers
-  if (print_status == true) {
-    print_status = false;
-    if (0 == sl_sleeptimer_get_timer_time_remaining(&one_shot_timer, &remaining) ) {
-      printf("One shot timer has %lu ms remaining\r\n", sl_sleeptimer_tick_to_ms(remaining));
-    }
-    if (0 == sl_sleeptimer_get_timer_time_remaining(&periodic_timer, &remaining) ) {
-      printf("Periodic timer has %lu ms remaining\r\n", sl_sleeptimer_tick_to_ms(remaining));
-   }
-  }
+void AESen(char *str1,char *str2){
+  unsigned char dataTo_Encrypt[16];
+         unsigned char encrypted_Data[16];
+         memcpy(dataTo_Encrypt, &str2[1], 16);
+           EncryptDataECB(dataTo_Encrypt, encrypted_Data);
+            memcpy(&str1[1], encrypted_Data, 16);
+            printf("%c%c%c%c",address[0],address[1],address[2],address[3]);
+}
+void AESde(char *str1,char *str2){
+  unsigned char dataToEncrypt[16];
+         unsigned char decryptedData[16];
+         memcpy(dataToEncrypt, &str2[1], 16);
+           DecryptDataECB(dataToEncrypt, decryptedData);
+            memcpy(&str1[1], decryptedData, 16);
+            printf("%c%c%c%c",address[0],address[1],address[2],address[3]);
 }
 
-/***************************************************************************//**
- * Function called on button change
- ******************************************************************************/
-void sl_button_on_change(int*k,int*f,int*l,int*g)
-{
-  bool is_running = false;
-    // Button 1 controls the one-shot timer
-    if (*k==1) {
-      if (sl_sleeptimer_is_timer_running(&one_shot_timer, &is_running) == 0) {
-        if (*l==0) {
-          // If timer is running, stop it
-          sl_sleeptimer_stop_timer(&one_shot_timer);
-        } else {
-          // If timer is stopped, restart it
-          sl_sleeptimer_restart_timer_ms(&one_shot_timer,
-                                         TIMEOUT_MS,
-                                         on_one_shot_timeout, NULL,
-                                         0,
-                                         SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+void re_connect(void){
+  sl_sleeptimer_stop_timer(&periodic_timer);
+  sl_sleeptimer_stop_timer(&one_shot_timer);
+  sl_sleeptimer_stop_timer(&status_timer);
+  //GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,1);//nguon
+  GPIO_PinModeSet (gpioPortB,4,gpioModePushPull,0);//ket noi nguon
+  GPIO_PinModeSet (gpioPortC,2,gpioModePushPull,1);//ket noi gateway thanh cong
+  GPIO_PinModeSet (gpioPortB,5,gpioModePushPull,1);//gui nhung khong co phan hoi
+  GPIO_PinModeSet (gpioPortC,0,gpioModePushPull,1);
+  GPIO_PinModeSet (gpioPortC,8,gpioModePushPull,1);
+  GPIO_PinModeSet (gpioPortA,0,gpioModePushPull,1);
+  char dataToConnect[] = { 0xFF, 0xFF, 0x17,'2',0x01,0x02,'E','\0'};
+      printf(dataToConnect);
+
+}
+void getData(){
+    sl_status_t status;
+    dem = 0;
+    char c;
+    while (dem < 8) {
+        int a=GPIO_PinInGet(gpioPortB, 00);
+        status = sl_iostream_getchar(sl_iostream_vcom_handle, &c);
+        if(!a){
+        if (status == SL_STATUS_OK) {
+            if(c == 'S'){
+                input_string[0] = c;  //starting data
+                dem = 1;
+            }
+            else if ((c == 'E')&&(input_string[0]=='S')) {
+                input_string[dem] = c;  //Ending data
+                break;
+            }
+            else if(dem>0){
+                input_string[dem] = c;
+                dem++;
+            }
         }
-      }
+        }
+        else{
+            re_connect();
+            connectToStation();
+        }
     }
-    if(*f==1){
-       //Button 0 controls the periodic timer
-      if (sl_sleeptimer_is_timer_running(&periodic_timer, &is_running) == 0) {
-
-        if (*g==1) {
-          // If timer is running, stop it
-         sl_sleeptimer_stop_timer(&periodic_timer);
-       } else {
-          // If timer is stopped, restart it
-          sl_sleeptimer_restart_periodic_timer_ms(&periodic_timer,
-                                                 TIMEOUT_MS,
-                                                  on_periodic_timeout, NULL,
-                                                  0,
-                                                 SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
-       }
-      }
-    }
-
 }
 
-void iostream_usart_init_sleep(void){
-  //int8_t c = 0;
-   uint8_t index = 0;
-   //uint32_t remaining;
-  // if (print_status == true) {
-   //    print_status = false;
-   //char buffer[BUFSIZE];
-   //sleeptimer_app_init();
-  //const char str1[]="123456789\r\n";
-  //har str[sizeof(str1)];
- // strcpy(str, str1);
-  //sl_sleeptimer_delay_millisecond(500);
-      //sl_iostream_write(sl_iostream_vcom_handle,str,strlen(str));
+void getAES_data(void){
+deleteString(input_string);
+input_string[20]='\0';
+     sl_status_t status;
+    int dem = 0;
+     char c;
+     while (dem < 20) {
+         int a=GPIO_PinInGet(gpioPortB, 00);
+         status = sl_iostream_getchar(sl_iostream_vcom_handle, &c);
+         if(!a){
+         if (status == SL_STATUS_OK) {
+             if((c == 'S')&&(dem==0)){
+                 input_string[0] = c;  //starting data
+                 dem = 1;
+                // GPIO_PinModeSet(gpioPortA, 4, gpioModePushPull, 1);
+             }
+             else if ((c == 'E')&&(input_string[0]=='S')&&(input_string[17]=='E')&&(input_string[18]=='E')) {
+                 input_string[dem] = c;  //Ending data
+                 break;
+             }
+             else if(dem>0){
+                 input_string[dem] = c;
+                 dem++;
+             }
+         }
+         }
+             else{
+                       re_connect();
+                       connectToStation();
+                   }
+     }
+ nhan_ve[0]='S';
+ GPIO_PinModeSet(gpioPortA, 7, gpioModePushPull, 1);
+    // printf("%s\n",input_string);
+     unsigned char dataToEncrypt[16];
+     unsigned char decryptedData[16];
+     memcpy(dataToEncrypt, &input_string[1], 16);
+       DecryptDataECB(dataToEncrypt, decryptedData);
+        memcpy(&nhan_ve[1], decryptedData, 16);
+        //printf("%c%c%c%c",address[0],address[1],address[2],address[3]);
+        //printf("%s\n",nhan_ve);
 
-  //sl_iostream_set_default(sl_iostream_vcom_handle);
-  //char str2[]="m1101";
-printf("m1101");
-  //sl_iostream_write(SL_IOSTREAM_STDOUT,str2,strlen(str2));
-  //printf("Printf uses the default stream, as long as iostream_retarget_stdio is included.\r\n");
-  sleeptimer_app_init();
-  // printf("> ");
+}
+int calculate_time(char a,char b){
+  return ((a-'0')*10*60+(b-'0')*60)*1000/6;
+}
+
+void gpio_set(void){
+  GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,1);
+ GPIO_PinModeSet (gpioPortB,4,gpioModePushPull,0);//ket noi nguon
+ GPIO_PinModeSet (gpioPortC,2,gpioModePushPull,1);//ket noi gateway thanh cong
+ GPIO_PinModeSet (gpioPortB,5,gpioModePushPull,1);//gui nhung khong co phan hoi
+  GPIO_PinModeSet (gpioPortC,0,gpioModePushPull,1);//motor
+ GPIO_PinModeSet (gpioPortC,8,gpioModePushPull,1);//motor
+  GPIO_PinModeSet (gpioPortA,0,gpioModePushPull,1);//motor
+  GPIO_PinModeSet (gpioPortC,1,gpioModePushPull,0);//lora
+  GPIO_PinModeSet (gpioPortC,3,gpioModePushPull,0);//lora
+}
+//char daily_before[3]={54,48,48};
+void iostream_usart_init_sleep(void){
  sl_sleeptimer_delay_millisecond(500);
-  //printf("m1101");
-   /* Retrieve characters, print local echo and full line back */
+ GPIO_PinModeSet (gpioPortC,2,gpioModePushPull,0);
+ GPIO_PinModeSet (gpioPortB,4,gpioModePushPull,1);
+ GPIO_PinModeSet (gpioPortC,0,gpioModePushPull,1);
+ GPIO_PinModeSet (gpioPortC,8,gpioModePushPull,1);
+ GPIO_PinModeSet (gpioPortA,0,gpioModePushPull,1);
+ char gui[17]={'2','0','0','0','2','5','8','0','0','0','0','0','0','0','0','0','0'};
+ unsigned char dataTo_Encrypt[16];
+        unsigned char decrypted_Data[16];
+        memcpy(dataTo_Encrypt, &gui[1], 16);
+          EncryptDataECB(dataTo_Encrypt, decrypted_Data);
+           memcpy(&transmit1[1], decrypted_Data, 16);
+
+           printf("%c%c%c",address[0],address[1],address[2]);
+
+         printf("%s",transmit1);
+
+
+
    while (1) {
 
 
-       char c;
-       sl_status_t status = sl_iostream_getchar(sl_iostream_vcom_handle, &c);
-       if (status == SL_STATUS_OK) {
-         if (c == '\r' || c == '\n'||c=='H'||c=='\0') {
-           // Ký tự kết thúc dòng được nhận, xử lý dữ liệu đã đọc
-             //sleeptimer_app_init();
-           buffer[index] = '\0';
-          // printf("Received data: %s\n", buffer);
-           char ascii[3] = "ABC";
-            char decimals[7]; // Chuỗi decimal sẽ có độ dài tối đa 6 ký tự (3 cặp số)
-
-            size_t asciiLength = 3;
-            size_t decimalLength = asciiLength * 2;
-
-            for (size_t i = 0; i < asciiLength; i++) {
-                int value = (int)ascii[i];
-                decimals[i * 2] = '0' + (value / 10);
-                decimals[i * 2 + 1] = '0' + (value % 10);
-            }
-
-            decimals[decimalLength] = '\0';
-
-         //   printf("Decimal: %s\n", decimals);
-
-
-
-           const char str1[] = "m10";//manual
-           const char str2[] = "m11";//autom
-          // volatile int a,b ;
-                               //const char *str2 = "World";
-
-           manual = strstr(buffer,str1);
-           autom = strstr( buffer,str2);
-           char sensor_1=buffer[3];
-           char sensor_2=buffer[6];
-           volatile int mo1,mo2;
-                                          if (manual != NULL) {
-                                             // printf("Chuoi str1 nho hon str2\n");
-                                            if(buffer[3]=='1'&& buffer[4]=='1'){
-                                                mo1=1;
-                                                mo2=1;
-                                              GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,mo1);
-                                              GPIO_PinModeSet (gpioPortA,7,gpioModePushPull,mo2);
-
-                                            }
-                                             if(buffer[3]=='1'&& buffer[4]=='0'){
-                                                 mo1 =1;
-                                                 mo2=0;
-                                            GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,mo1);
-                                             GPIO_PinModeSet (gpioPortA,7,gpioModePushPull,mo2);
-                                            }
-                                             if(buffer[3]=='0'&& buffer[4]=='1'){
-                                                 mo1 =0;
-                                                 mo2=1;
-                                              GPIO_PinModeSet (gpioPortA,7,gpioModePushPull,mo1);
-                                              GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,mo2);
-                                             }
-                                             if(buffer[3]=='0'&& buffer[4]=='0'){
-                                                 mo1 =0;
-                                                 mo2=0;
-                                                GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,mo1);
-                                                GPIO_PinModeSet (gpioPortA,7,gpioModePushPull,mo2);
-                                             }
-                                             sl_sleeptimer_stop_timer(&periodic_timer);
-                                             sl_sleeptimer_stop_timer(&one_shot_timer);
-                                          } else if (autom != NULL) {
-                                             // printf("Chuoi str1 lon hon str2\n");
-                                              if(sensor_1<='4'&&sensor_2<='4'){
-                                                  mo1=1;
-                                                  mo2=1;
-                                              GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,mo1);
-                                              GPIO_PinModeSet (gpioPortA,7,gpioModePushPull,mo2);
+      static int m01,m02,m03,m011,m022,m033;
+                 mo1=&m01;
+                 mo2=&m02;
+                 mo3=&m03;
+   //getData();//receive data from uart
+     getAES_data();
+//     unsigned char dataToEncrypt[16];
+//       unsigned char decryptedData[16];
+//       memcpy(dataToEncrypt, &nhan_ve[1], 16);
+//          EncryptDataECB(dataToEncrypt, decryptedData);
+//          memcpy(&nhan_ve[1], decryptedData, 16);
+//          printf("%c%c%c%c",address[0],address[1],address[2],address[3]);
+//
+       //  printf("%s\n",nhan_ve);
+        // printf("%s\n",input_string);
+           //printf("Received data: %s\n", input_string);
+           char a_m = nhan_ve[1];
+           if((nhan_ve[0]=='S')&&(input_string[17]=='E')&&(input_string[18]=='E')&&(input_string[19]=='E')){
+              // deleteString(nhan_ve);
+                                                  check=&a_m;
+                                                //  printf("%c\n",*check);
+                                                  m01= nhan_ve[2]-'0';
+                                                  m02= nhan_ve[3]-'0';
+                                                  m03= nhan_ve[4]-'0';
+                                                  m011=abs(m01-1);
+                                                  m022=abs(m02-1);
+                                                  m033=abs(m03-1);
+                                                  GPIO_PinModeSet (gpioPortC,0,gpioModePushPull,m011);
+                                                  GPIO_PinModeSet (gpioPortC,8,gpioModePushPull,m022);
+                                                  GPIO_PinModeSet (gpioPortA,0,gpioModePushPull,m033);
+                                              if(nhan_ve[1]=='1'){
+                                   GPIO_PinModeSet(gpioPortA, 4, gpioModePushPull, 1);
+                                 int time_out_1=calculate_time(nhan_ve[5],nhan_ve[6]);
+                                 sl_sleeptimer_restart_periodic_timer_ms(&periodic_timer,
+                                                                              time_out_1,
+                                                                              on_periodic_timeout, NULL,
+                                                                              0,
+                                                                              SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+                                 sl_sleeptimer_restart_timer_ms(&one_shot_timer,
+                                                                     time_out_1,
+                                                                     on_one_shot_timeout, NULL,
+                                                                     0,
+                                                                     SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
 
 
-                                             sl_sleeptimer_restart_periodic_timer_ms(&periodic_timer,
-                                                                                                     15000,
-                                                                                                     on_periodic_timeout, NULL,
-                                                                                                      0,
-                                                                                                    SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
-                                             sl_sleeptimer_restart_timer_ms(&one_shot_timer,
-                                                                                              15000,
-                                                                                              on_one_shot_timeout, NULL,
-                                                                                               0,
-                                                                                             SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+                                 sl_sleeptimer_restart_timer_ms(&status_timer,
+                                                                time_out_1,
+                                                                on_status_timeout, NULL,
+                                                                0,
+                                                                SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+                                                                              }
+                                              else {
+                                     int time_out_2=calculate_time(nhan_ve[5],nhan_ve[6]);
+                                     sl_sleeptimer_restart_periodic_timer_ms(&periodic_timer,
+                                                                             time_out_2,
+                                                                             on_periodic_timeout, NULL,
+                                                                             0,
+                                                                             SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+
+                                     sl_sleeptimer_restart_timer_ms(&one_shot_timer,
+                                                                    time_out_2,
+                                                                    on_one_shot_timeout, NULL,
+                                                                    0,
+                                                                    SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+                                     sl_sleeptimer_restart_timer_ms(&status_timer,
+                                                                    time_out_2,
+                                                                    on_status_timeout, NULL,
+                                                                    0,
+                                                                    SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
+
                                               }
-                                              if(sensor_1<='4'&&sensor_2>'4') {
-                                                  mo1=1;
-                                                  mo2=0;
-                                                GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,mo1);
-                                                GPIO_PinModeSet (gpioPortA,7,gpioModePushPull,mo2);
-                                                sl_sleeptimer_restart_periodic_timer_ms(&periodic_timer,
-                                                                                                      15000,
-                                                                                                      on_periodic_timeout, NULL,
-                                                                                                      0,
-                                                                                                     SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
-                                              }
-                                              if(sensor_1>'4'&&sensor_2<='4'){
-                                                  mo1=0;
-                                                  mo2=1;
-                                              GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,mo1);
-                                              GPIO_PinModeSet (gpioPortA,7,gpioModePushPull,mo2);
-                                              sl_sleeptimer_restart_timer_ms(&one_shot_timer,
-                                                                                             15000,
-                                                                                             on_one_shot_timeout, NULL,
-                                                                                             0,
-                                                                                             SL_SLEEPTIMER_NO_HIGH_PRECISION_HF_CLOCKS_REQUIRED_FLAG);
-                                              }
-                                              if(sensor_1>'4'&&sensor_2>'4'){
-                                                  mo1=0;
-                                                  mo2=0;
-                                                  GPIO_PinModeSet (gpioPortA,4,gpioModePushPull,mo1);
-                                                  GPIO_PinModeSet (gpioPortA,7,gpioModePushPull,mo2);
-                                              }
-
-                                          }
-                                          char data[12] ="65666768";
-                                          char MO1= '0'+mo1;
-                                          char MO2= '0'+mo2;
-                                          char MO3= '0'+0;
-                                          data[8]=MO1;
-                                          data[9]= MO2;
-                                         data[10]= MO3;
-                                         //data[11]='0';
-                                         // printf("%s",data);
-                                         //char data_sensor[12];
-
-
-                                          //const char* data_sensor = "6566676869";
-                                          char decimal[12];
-                                            size_t i;
-                                            for (i = 0; i < 11; i++) {
-                                              decimal[i] = data[i];
-                                            }
-                                            decimal[i] = '\0';
-                                            size_t length = strlen(decimal);
-                                            char Data[10] = "";
-                                             uint8_t j = 0;
-                                             for (uint8_t i = 0; i < length; i += 2) {
-                                               char asciiData[3] = "";
-                                               asciiData[0] = decimal[i];
-                                               asciiData[1] = decimal[i + 1];
-                                               asciiData[2] = '\0';
-                                               int value = (int)(asciiData[0] - '0') * 10 + (int)(asciiData[1] - '0');
-                                               Data[j] = (char)value;
-                                               j++;
-                                             }
-
-                                             // Đoạn code dưới đây làm gì đó với mảng Data chứa kết quả ASCII
-                                             // Ví dụ: In kết quả ASCII
-                                           for (uint8_t i = 0; i < j; i++) {
-                                               printf("%c",Data[i]);
-                                             }
-
-
-
-
-           index = 0;
-             //sl_button_on_change();
-         }
-         else {
-           // Lưu trữ ký tự vào bộ đệm
-           if (index < BUFSIZE - 1) {
-             buffer[index] = c;
-             index++;
-           }
-         }
-       }
-
+char Mo1 =m01+'0';
+char Mo2 =m02+'0';
+char Mo3 =m03+'0';
+char transmit2[21]={'2','0','0','0','2','5','8','0','0','0','0','0','0','0','0','0','0','E','E','E','\0'};
+transmit2[1]=Mo1;
+transmit2[2]=Mo2;
+transmit2[3]=Mo3;
+//printf("%s\n",transmit2);
+unsigned char dataTo_encrypt[16];
+unsigned char decrypted_data[16];
+        memcpy(dataTo_encrypt, &transmit2[1], 16);
+          EncryptDataECB(dataTo_encrypt, decrypted_data);
+           memcpy(&transmit2[1], decrypted_data, 16);
+           printf("%c%c%c",address[0],address[1],address[2]);
+printf("%s",transmit2);
+        }
    }
-   }
-
-void gpio_set(void){
-  //GPIO_PinModeSet (gpioPortA,7,gpioModePushPull,1);
-  GPIO_PinModeSet (gpioPortC,1,gpioModePushPull,0);
-  GPIO_PinModeSet (gpioPortC,3,gpioModePushPull,0);
 }
-
-
-//void set_up_pin(int *mo1,int*mo2){
-
-//}
