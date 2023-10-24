@@ -1,0 +1,248 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Choose garden"
+            android:textColor="@color/light_blue_900"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinner_node"
+            android:layout_width="167dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="24dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set daily pump "
+            android:textColor="@color/light_blue_900"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <Switch
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/sw_daily_pump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/time_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TimePicker
+            android:id="@+id/simpleTimePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CustomTimePickerStyle"
+            android:timePickerMode="spinner"
+            android:numbersTextColor="#FF039BE5"
+            android:numbersBackgroundColor="#FF039BE5"
+            android:amPmTextColor="#FF039BE5"
+            android:background="#FFFFFF" />
+        <View
+            android:id="@+id/overlay"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:background="#80000000"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Set pump time "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_blue_900"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+        <EditText
+            android:inputType="number"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/edt_pump"
+            android:hint="minute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:text="(minute)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Battery warning"
+            android:textColor="@color/light_blue_900"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/seekBar_battery"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="48dp"
+
+            android:max="100"
+            android:progress="3" />
+        <TextView
+            android:id="@+id/text_view_battery_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yo"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Temperature warning"
+            android:textColor="@color/light_blue_900"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:layout_gravity="center"
+            android:id="@+id/seekBar_temp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+
+            android:max="100"
+            android:progress="3" />
+        <TextView
+            android:id="@+id/text_view_temp_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yo"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Moisture warning"
+            android:textColor="@color/light_blue_900"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/seekBar_moisture"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="35dp"
+            android:max="100"
+            android:progress="3" />
+
+        <TextView
+            android:id="@+id/textView_moisture"
+            android:layout_width="26dp"
+            android:layout_height="wrap_content"
+            android:text="Yo" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Humidity warning"
+            android:textColor="@color/light_blue_900"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:layout_marginLeft="35dp"
+            android:layout_gravity="center"
+            android:id="@+id/seekBar_humidity"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+
+            android:max="100"
+            android:progress="3" />
+        <TextView
+            android:id="@+id/textView_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yo"/>
+
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:layout_gravity="center"
+        android:background="@drawable/gray"
+        android:text="Ok"
+        android:id="@+id/btn_settings_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
