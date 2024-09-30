@@ -1,7 +1,30 @@
-Introduction
+# Smart Agriculture System
+## System structure
+![Screenshot 2024-09-30 231607](https://github.com/user-attachments/assets/1ba7cdd7-d9cc-42a8-ad12-7288ca55c272)
 
-The dawn of agriculture was a momentous turning point in human history, signifying our ability to manipulate the environment to produce sustenance for a burgeoning population. For more than 12,000 years, agriculture has been the cornerstone of human progress, leading to significant milestones such as the cultivation of diverse crops, harnessing the power of fire, and the evolution of culinary practices. This journey has propelled us into an era where self-driving machinery and cutting-edge smart agricultural systems define the agricultural landscape.
-However, as we stand on the threshold of the 21st century, we confront a new juncture in the history of agriculture. Projections suggest that the global population will reach a staggering 9.7 billion people by 2050. This demographic surge has placed immense pressure on the agricultural industry to not only increase production but also adapt to evolving nutritional preferences. The ramifications are profound, with these demands exerting an unprecedented strain on the ecological health of our planet.
-In response to these formidable challenges, the concept of "smart agriculture systems" has emerged as a beacon of hope. These systems harness the transformative potential of automation and advanced technology to augment and optimize farming operations, thereby increasing efficiency and sustainability. Pioneering agriculture technology companies are leading the charge, birthing innovations such as drone-assisted operations, autonomous tractors, robotic harvesters, and automated seeding and irrigation systems.
-In this article, our focus is to delve into a specific automated farming system that our team has designed, rather than providing a broad overview of various types of automated agriculture. We will explore the intricacies of this particular system, shedding light on its multifaceted advantages and inherent challenges. Additionally, we will highlight the obstacles that farmers face when adopting such cutting-edge technologies, including the initial cost barriers and the complexities involved in integrating specialized equipment into traditional farming practices. This article serves as an in-depth examination of our unique agricultural innovation and its potential implications.
-As we navigate this profound transformation in agriculture, it is incumbent upon us to grasp the profound ways in which automated farming can chart a course towards a sustainable and flourishing future for humanity an	d the delicate ecosystem of our planet. 
+- **Central Station:** functions as the core router, where incoming raw data is analyzed, stored and make decision of the system
+- **Sensor Nodes:** responsible for collecting environmental parameters
+- **Motor nodes:** execute commands from Central Station such as watering, heatting, ..
+
+## Hardwawre and Networking
+![image](https://github.com/user-attachments/assets/35881707-7647-4be3-8546-b43baa236f5e)
+
+- **Sensor Node & Motor Node:** uses `KIT EK2703A` (Silicon lab kit) as MCU, actuators will be introduced detail in report.
+- **Central Station:** utilizes `Ras Pi-4` which supports internet accessibility as a gateway of whole system.
+- **Application:** where user can interact with the system, can manage and observe their green field.
+- **Cloud:** here the system deploys a host for database, also supply API to interact between hardwares and user application.
+
+## Features
+- User interface (parameter configurable, operating screen with nodes)
+- Mananging accounts (password encryption, notifications)
+- Automatic device pairing
+- Encrypt data on transmiting line
+- Save power mode
+- Manual mode and auto mode
+
+
+## Results
+![image](https://github.com/user-attachments/assets/389ac458-c3d1-4be6-9c51-fbc44540b60a)
+
+
+## User guide
