@@ -1,2 +1,0 @@
-# DigitalDetectives
-agriculture iot 
